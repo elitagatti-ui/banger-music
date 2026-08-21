@@ -391,9 +391,9 @@ body {
     font-size: 20px;
 }
 
-/* =========================================
+/* ===
    DETALLE DE CANCIÓN
-========================================= */
+== */
 
 .detalle-page {
     min-height: 100vh;
@@ -406,9 +406,9 @@ body {
 }
 
 
-/* =========================================
-   VOLVER
-========================================= */
+/* ===
+   VOLVER DETALLE
+== */
 
 .detalle-back {
     display: inline-block;
@@ -429,9 +429,9 @@ body {
 }
 
 
-/* =========================================
+/* ===
    CONTENIDO PRINCIPAL
-========================================= */
+== */
 
 .detalle-main {
     max-width: 1200px;
@@ -448,9 +448,9 @@ body {
 }
 
 
-/* =========================================
-   PORTADA
-========================================= */
+/* ==
+   PORTADA DETALLE
+=== */
 
 .detalle-cover {
     width: 100%;
@@ -478,9 +478,9 @@ body {
 }
 
 
-/* =========================================
-   INFORMACIÓN
-========================================= */
+/* ===
+   INFORMACIÓN DETALLE
+=== */
 
 .detalle-info {
     display: flex;
@@ -549,9 +549,9 @@ body {
 }
 
 
-/* =========================================
-   BOTONES
-========================================= */
+/* ===
+   BOTONES DETALLE
+=== */
 
 .detalle-actions {
     display: flex;
@@ -622,9 +622,9 @@ body {
 }
 
 
-/* =========================================
+/* ===
    DATOS
-========================================= */
+=== */
 
 .detalle-data {
     width: 100%;
@@ -667,9 +667,9 @@ body {
 }
 
 
-/* =========================================
-   SECCIONES
-========================================= */
+/* ===
+   SECCIONES DETALLE
+==== */
 
 .detalle-section {
     max-width: 1200px;
@@ -702,9 +702,9 @@ body {
 }
 
 
-/* =========================================
-   ESTADÍSTICAS
-========================================= */
+/* ==
+   ESTADÍSTICAS DETALLE
+=== */
 
 .stats-grid {
     display: grid;
@@ -753,9 +753,9 @@ body {
 }
 
 
-/* =========================================
-   DESCRIPCIÓN
-========================================= */
+/* =====
+   DESCRIPCIÓN DET
+== */
 
 .description-card {
     background: #0b0b0b;
@@ -778,9 +778,9 @@ body {
 }
 
 
-/* =========================================
+/* ====
    BOTÓN
-========================================= */
+== */
 
 .detalle-btn {
     display: inline-block;
@@ -815,9 +815,9 @@ body {
 }
 
 
-/* =========================================
+/* ===
    ERROR
-========================================= */
+=== */
 
 .detalle-error {
     display: flex;
@@ -842,9 +842,9 @@ body {
 }
 
 
-/* =========================================
-   TABLET
-========================================= */
+/* ====
+   TABLET ERROR
+=== */
 
 @media (max-width: 950px) {
 
@@ -870,9 +870,9 @@ body {
 }
 
 
-/* =========================================
-   CELULAR
-========================================= */
+/* ===
+   CELULAR ERROR
+=== */
 
 @media (max-width: 700px) {
 
@@ -918,44 +918,7 @@ body {
 }
 
 
-/* =========================================
-   CELULAR PEQUEÑO
-========================================= */
 
-@media (max-width: 400px) {
-
-    .detalle-page {
-        padding: 20px 15px;
-    }
-
-    .detalle-info h1 {
-        font-size: 34px;
-    }
-
-    .detalle-info h2 {
-        font-size: 19px;
-    }
-
-    .detalle-actions {
-        flex-direction: column;
-
-        align-items: stretch;
-    }
-
-    .detalle-play {
-        width: 100%;
-    }
-
-    .detalle-favorite {
-        width: 100%;
-
-        border-radius: 25px;
-    }
-
-    .description-card {
-        padding: 20px;
-    }
-}
 
 .btn-detalle {
     display: inline-flex;
@@ -1006,4 +969,232 @@ body {
 
 .btn-detalle:hover i {
     transform: translateX(3px);
+}
+
+/* =================================
+   ERROR 404
+================================= */
+
+.error-page {
+    min-height: calc(100vh - 70px);
+
+    background: #000;
+
+    color: #fff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    text-align: center;
+}
+
+
+/* CONTENIDO */
+
+.error-content {
+    max-width: 650px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* =================================
+   ÍCONO
+================================= */
+
+.error-icon {
+    width: 90px;
+
+    height: 90px;
+
+    border-radius: 50%;
+
+    background: #d7ff00;
+
+    color: #000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 50px;
+
+    font-weight: bold;
+
+    margin-bottom: 30px;
+
+    box-shadow:
+        0 0 35px rgba(215, 255, 0, 0.15);
+}
+
+
+/* =================================
+   ERROR CODE
+================================= */
+
+.error-code {
+    color: #d7ff00;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =================================
+   TÍTULO
+================================= */
+
+.error-content h1 {
+    font-size: clamp(40px, 6vw, 70px);
+
+    line-height: 1;
+
+    margin: 0 0 20px;
+
+    font-weight: 800;
+}
+
+
+/* =================================
+   TEXTO
+================================= */
+
+.error-content p {
+    color: #888;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    margin: 0 0 30px;
+}
+
+
+/* =================================
+   BOTÓN
+================================= */
+
+.error-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 14px 25px;
+
+    border-radius: 30px;
+
+    background: #d7ff00;
+
+    color: #000;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+.error-button:hover {
+    background: #efffa0;
+
+    color: #000;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 20px rgba(215, 255, 0, 0.2);
+}
+
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 700px) {
+
+    .error-page {
+        padding: 30px 20px;
+    }
+
+    .error-icon {
+        width: 75px;
+
+        height: 75px;
+
+        font-size: 42px;
+
+        margin-bottom: 25px;
+    }
+
+    .error-content p {
+        font-size: 15px;
+    }
+}
+
+
+/* =================================
+   CELULAR
+================================= */
+
+@media (max-width: 450px) {
+
+    .error-page {
+        min-height: calc(100vh - 65px);
+
+        padding: 25px 18px;
+    }
+
+    .error-icon {
+        width: 65px;
+
+        height: 65px;
+
+        font-size: 36px;
+    }
+
+    .error-code {
+        font-size: 12px;
+
+        letter-spacing: 2px;
+    }
+
+    .error-content h1 {
+        font-size: 38px;
+    }
+
+    .error-content p {
+        font-size: 14px;
+    }
+
+    .error-content p br {
+        display: none;
+    }
+
+    .error-button {
+        width: 100%;
+
+        max-width: 280px;
+    }
 }
