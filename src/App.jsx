@@ -1,19 +1,28 @@
 import Navbar from "./components/Navbar";
+import Cancion from './components/CancionCardj';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Catalogo from "./pages/Catalogo";
 
 function App() {
   return (
-    <div>
-       <>
+     <BrowserRouter>
+
             <Navbar />
 
-            <main>
-                <h1></h1>
-            </main>
-        </>
-    
-      <h1>Cuando las palabras fallan, la música hab</h1>
-    </div>
-  );
+            <Routes>
+
+                
+
+                <Route
+                    path="/"
+                    element={<Catalogo />}
+                />
+
+            </Routes>
+
+        </BrowserRouter>
+
+    );
 }
 
 export default App;

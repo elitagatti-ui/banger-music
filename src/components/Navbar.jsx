@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 function Navbar() {
     return (
+
+        
         <nav className="navbar">
 
             {/* LOGO */}
@@ -17,15 +20,24 @@ function Navbar() {
             {/* LINKS */}
             <div className="nav-links">
 
-                <a href="/">Catalogo</a>
+                <Link to="/">
+                    inicio
+                </Link>
 
-                <a href="/">Explorar</a>
+                <Link to="/">
+                    Explorar
+                </Link>
 
-                <a href="/">Playlists</a>
+                <Link to="/playlists">
+                    Playlists
+                </Link>
 
-                <a href="/">Ayuda</a>
+                <Link to="/ayuda">
+                    Ayuda
+                </Link>
 
             </div>
+
 
 
             {/* SEPARADOR */}
