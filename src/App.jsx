@@ -1,14 +1,19 @@
-import Navbar from "./components/Navbar"
-
+import Navbar from "./components/Navbar";
 
 function App() {
-
   return (
     <div>
-    <Navbar></Navbar>
-           <h1>Catalogo</h1>
-           </div>
-  )
+       <>
+            <Navbar />
+
+            <main>
+                <h1></h1>
+            </main>
+        </>
+    
+      <h1>Cuando las palabras fallan, la música hab</h1>
+    </div>
+  );
 }
 
-export default App
+export default App;
