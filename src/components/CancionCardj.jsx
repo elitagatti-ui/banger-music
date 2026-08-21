@@ -1,4 +1,5 @@
-function Cancion({ nombre, artista, imagen,album,genero }) {
+import { Link } from "react-router-dom"
+function Cancion({ id, nombre, artista, imagen,album,genero }) {
 
     return (
         <div className="card bg-dark text-white h-100">
@@ -29,6 +30,14 @@ function Cancion({ nombre, artista, imagen,album,genero }) {
     <i className="bi bi-play-fill"></i>
     Reproducir
 </button>
+<Link
+    to={`/detalle/${id}`}
+    className="btn-detalle"
+>
+    Ver detalle
+    <i className="bi bi-arrow-right"></i>
+</Link>
+
 
             </div>
 

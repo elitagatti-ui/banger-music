@@ -24,7 +24,7 @@ function Navbar() {
                     inicio
                 </Link>
 
-                <Link to="/">
+                <Link to="/detalle">
                     Explorar
                 </Link>
 
