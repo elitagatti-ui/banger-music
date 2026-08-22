@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
-function Cancion({ id, nombre, artista, imagen,album,genero , onPlay}) {
+
+function Cancion({ id, nombre, artista, imagen, album, genero, onPlay }) {
 
     return (
         <div className="card bg-dark text-white h-100">
@@ -19,28 +20,34 @@ function Cancion({ id, nombre, artista, imagen,album,genero , onPlay}) {
                 <p className="card-text text-secondary">
                     {artista}
                 </p>
-                 <p className="card-text text-secondary">
+
+                <p className="card-text text-secondary">
                     {album}
                 </p>
-                 <p className="card-text text-secondary">
+
+                <p className="card-text text-secondary">
                     {genero}
                 </p>
 
-                <button
-    className="btn-reproducir"
-    onClick={onPlay}
->
-    <i className="bi bi-play-fill"></i>
-    Reproducir
-</button>
-<Link
-    to={`/detalle/${id}`}
-    className="btn-detalle"
->
-    Ver detalle
-    <i className="bi bi-arrow-right"></i>
-</Link>
+                <div className="card-buttons">
 
+                    <button
+                        className="btn-reproducir"
+                        onClick={onPlay}
+                    >
+                        <i className="bi bi-play-fill"></i>
+                        Reproducir
+                    </button>
+
+                    <Link
+                        to={`/detalle/${id}`}
+                        className="btn-detalle"
+                    >
+                        Ver detalle
+                        <i className="bi bi-arrow-right"></i>
+                    </Link>
+
+                </div>
 
             </div>
 

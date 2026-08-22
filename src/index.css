@@ -5,21 +5,36 @@
 }
 
 body {
-    background-color: #000;
-    color: white;
+    background-color: #0A0E17;
+    color: #FFFFFF;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 
-/* 
+/* =========================================
+   VARIABLES DEL THEME DARK
+========================================= */
+
+:root {
+    --primary: #FF6500;
+    --background: #0A0E17;
+    --surface: #121824;
+    --surface-hover: #1E2638;
+    --border: #2A3448;
+    --text-primary: #FFFFFF;
+    --text-muted: #94A3B8;
+}
+
+
+/* =========================================
    NAVBAR
- */
+========================================= */
 
 .navbar {
     width: 100%;
     height: 70px;
 
-    background-color: #000;
+    background-color: var(--background);
 
     display: flex;
     align-items: center;
@@ -27,12 +42,14 @@ body {
     padding: 0 40px;
 
     gap: 35px;
+
+    border-bottom: 1px solid var(--border);
 }
 
 
-/* 
+/* =========================================
    LOGO
- */
+========================================= */
 
 .logo {
     display: flex;
@@ -44,14 +61,16 @@ body {
     font-weight: 700;
 
     margin-right: auto;
+
+    color: var(--text-primary);
 }
 
 .logo-icon {
     width: 38px;
     height: 38px;
 
-    background-color: white;
-    color: #000;
+    background-color: var(--primary);
+    color: var(--text-primary);
 
     border-radius: 50%;
 
@@ -64,9 +83,9 @@ body {
 }
 
 
-/*
+/* =========================================
    LINKS
- */
+========================================= */
 
 .nav-links {
     display: flex;
@@ -77,7 +96,7 @@ body {
 
 .nav-links a,
 .account-links a {
-    color: white;
+    color: var(--text-primary);
 
     text-decoration: none;
 
@@ -89,25 +108,25 @@ body {
 
 .nav-links a:hover,
 .account-links a:hover {
-    color: #0080ff;
+    color: var(--primary);
 }
 
 
-/* 
+/* =========================================
    SEPARADOR
- */
+========================================= */
 
 .separator {
     width: 1px;
     height: 25px;
 
-    background-color: #777;
+    background-color: var(--border);
 }
 
 
-/*
+/* =========================================
    CUENTA
- */
+========================================= */
 
 .account-links {
     display: flex;
@@ -117,16 +136,16 @@ body {
 }
 
 
-/*
-   BOTÓN FLÚOR
- */
+/* =========================================
+   BOTÓN PRINCIPAL
+========================================= */
 
 .account-links button {
     border: none;
 
-    background-color: #d7ff00;
+    background-color: var(--primary);
 
-    color: #000;
+    color: var(--text-primary);
 
     font-size: 16px;
     font-weight: 700;
@@ -141,229 +160,71 @@ body {
 }
 
 .account-links button:hover {
-    background-color: #efffa0;
+    background-color: #ff7a26;
 
     transform: scale(1.03);
 }
 
-/* =========================
-   CATALOGO
-========================= */
+/* =========================================
+   CARDS DE CANCIONES
+========================================= */
 
-.catalogo {
-    min-height: calc(100vh - 70px);
-
-    background-color: #000;
-
-    padding: 60px 7%;
-}
-
-
-/* HEADER */
-
-.catalogo-header {
-    margin-bottom: 60px;
-}
-
-.catalogo-header p {
-    color: #d7ff00;
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 15px;
-}
-
-.catalogo-header h1 {
-    font-size: 60px;
-
-    margin-bottom: 15px;
-}
-
-.catalogo-header span {
-    color: #999;
-
-    font-size: 17px;
-}
-
-
-/* TITULO */
-
-.catalogo-title {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    margin-bottom: 30px;
-}
-
-.catalogo-title h2 {
-    font-size: 28px;
-}
-
-.catalogo-title button {
-    background-color: #d7ff00;
-
-    color: #000;
-
-    border: none;
-
-    padding: 12px 20px;
-
-    border-radius: 25px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-}
-
-
-/* GRID */
-
-.songs-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 25px;
-}
-
-
-
-
-
-
-
-
-/* IMAGEN */
-
-.song-image {
-    position: relative;
-
-    width: 100%;
-
-    height: 250px;
-}
-
-.song-image img {
-    width: 100%;
-
+.songs-grid .card {
     height: 100%;
+    border: none;
+    background-color: var(--surface) !important;
+    border-radius: 12px;
+    overflow: hidden;
+}
 
+.songs-grid .card-img-top {
+    height: 250px;
     object-fit: cover;
 }
 
-
-/* PLAY */
-
-.play-button {
-    position: absolute;
-
-    right: 15px;
-    bottom: 15px;
-
-    width: 50px;
-    height: 50px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background-color: #d7ff00;
-
-    color: #000;
-
-    font-size: 18px;
-
-    cursor: pointer;
-
-    opacity: 0;
-
-    transition: 0.3s;
-}
-
-.song-card:hover .play-button {
-    opacity: 1;
-}
-
-
-/* INFO */
-
-.song-info {
+/* Contenido de la card */
+.songs-grid .card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     padding: 20px;
 }
 
-.song-info h3 {
-    font-size: 19px;
-
+/* Título */
+.songs-grid .card-title {
+    color: var(--text-primary);
     margin-bottom: 8px;
+
+    /* Mantiene todos los títulos con la misma altura */
+    min-height: 48px;
 }
 
-.song-info p {
-    color: #aaa;
-
-    margin-bottom: 15px;
+/* Información */
+.songs-grid .card-text {
+    margin-bottom: 6px;
 }
 
-.song-info span {
-    color: #d7ff00;
+/* =========================================
+   CONTENEDOR DE BOTONES
+========================================= */
 
-    font-size: 12px;
-
-    border: 1px solid #d7ff00;
-
-    padding: 5px 10px;
-
-    border-radius: 20px;
+.songs-grid .card-body {
+    position: relative;
 }
 
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 900px) {
-
-    .songs-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
+/* Hace que los botones queden abajo */
+.songs-grid .btn-reproducir,
+.songs-grid .btn-detalle {
+    margin-top: auto;
 }
 
+/* =========================================
+   BOTÓN REPRODUCIR
+========================================= */
 
-@media (max-width: 600px) {
-
-    .catalogo {
-        padding: 40px 20px;
-    }
-
-    .catalogo-header h1 {
-        font-size: 42px;
-    }
-
-    .catalogo-title {
-        align-items: flex-start;
-
-        flex-direction: column;
-
-        gap: 15px;
-    }
-
-    .songs-grid {
-        grid-template-columns: 1fr;
-    }
-
-}
 .btn-reproducir {
-    background-color: #d7ff00;
-    color: #000;
+    background-color: var(--primary);
+    color: var(--text-primary);
 
     border: none;
     border-radius: 25px;
@@ -377,13 +238,17 @@ body {
 
     display: flex;
     align-items: center;
+    justify-content: center;
+
     gap: 8px;
 
     transition: 0.2s;
+
+    width: 100%;
 }
 
 .btn-reproducir:hover {
-    background-color: #efffa0;
+    background-color: #ff7a26;
     transform: scale(1.03);
 }
 
@@ -391,29 +256,63 @@ body {
     font-size: 20px;
 }
 
-/* ===
-   DETALLE DE CANCIÓN
-== */
+/* =========================================
+   BOTÓN DETALLE
+========================================= */
 
-.detalle-page {
-    min-height: 100vh;
+.btn-detalle {
+    margin-top: 10px;
 
-    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    color: #fff;
+    gap: 8px;
 
-    padding: 45px 7%;
+    width: 100%;
+
+    padding: 10px 20px;
+
+    border: 1px solid var(--primary);
+    border-radius: 25px;
+
+    color: var(--primary);
+    background: transparent;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: 0.2s;
 }
 
+.btn-detalle:hover {
+    background-color: var(--primary);
+    color: var(--text-primary);
+}
+/* =========================================
+   BOTONES DE LA CARD
+========================================= */
 
-/* ===
-   VOLVER DETALLE
-== */
+.card-buttons {
+    margin-top: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    width: 100%;
+}
+
+/* =========================================
+   VOLVER
+========================================= */
 
 .detalle-back {
     display: inline-block;
 
-    color: #aaa;
+    color: var(--text-muted);
 
     text-decoration: none;
 
@@ -425,13 +324,13 @@ body {
 }
 
 .detalle-back:hover {
-    color: #d7ff00;
+    color: var(--primary);
 }
 
 
-/* ===
+/* =========================================
    CONTENIDO PRINCIPAL
-== */
+========================================= */
 
 .detalle-main {
     max-width: 1200px;
@@ -448,9 +347,9 @@ body {
 }
 
 
-/* ==
-   PORTADA DETALLE
-=== */
+/* =========================================
+   PORTADA
+========================================= */
 
 .detalle-cover {
     width: 100%;
@@ -461,10 +360,10 @@ body {
 
     overflow: hidden;
 
-    border: 1px solid #242424;
+    border: 1px solid var(--border);
 
     box-shadow:
-        0 0 30px rgba(215, 255, 0, 0.08);
+        0 0 30px rgba(255, 101, 0, 0.08);
 }
 
 .detalle-cover img {
@@ -478,9 +377,9 @@ body {
 }
 
 
-/* ===
-   INFORMACIÓN DETALLE
-=== */
+/* =========================================
+   INFORMACIÓN
+========================================= */
 
 .detalle-info {
     display: flex;
@@ -491,10 +390,12 @@ body {
 }
 
 
-/* ETIQUETA */
+/* =========================================
+   ETIQUETA
+========================================= */
 
 .detalle-label {
-    color: #d7ff00;
+    color: var(--primary);
 
     font-size: 12px;
 
@@ -506,7 +407,9 @@ body {
 }
 
 
-/* TÍTULO */
+/* =========================================
+   TÍTULO
+========================================= */
 
 .detalle-info h1 {
     font-size: clamp(40px, 5vw, 70px);
@@ -517,14 +420,16 @@ body {
 
     font-weight: 800;
 
-    color: #fff;
+    color: var(--text-primary);
 }
 
 
-/* ARTISTA */
+/* =========================================
+   ARTISTA
+========================================= */
 
 .detalle-info h2 {
-    color: #aaa;
+    color: var(--text-muted);
 
     font-size: 25px;
 
@@ -534,10 +439,12 @@ body {
 }
 
 
-/* ÁLBUM */
+/* =========================================
+   ÁLBUM
+========================================= */
 
 .detalle-album {
-    color: #777;
+    color: var(--text-muted);
 
     font-size: 16px;
 
@@ -545,13 +452,13 @@ body {
 }
 
 .detalle-album strong {
-    color: #ddd;
+    color: var(--text-primary);
 }
 
 
-/* ===
+/* =========================================
    BOTONES DETALLE
-=== */
+========================================= */
 
 .detalle-actions {
     display: flex;
@@ -564,36 +471,103 @@ body {
 }
 
 
-/* REPRODUCIR */
+/* =========================================
+   REPRODUCIR
+========================================= */
 
-.detalle-play {
+.reproductor {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 90px;
+
+    background: #121824;
+
+    border-top: 1px solid #2A3448;
+
+    color: #FFFFFF;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 30px;
+
+    z-index: 9999;
+}
+
+.reproductor-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.reproductor-info img {
+    width: 60px;
+    height: 60px;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+}
+
+.reproductor-info h4 {
+    margin: 0;
+    color: #FFFFFF;
+}
+
+.reproductor-info p {
+    margin: 5px 0 0;
+    color: #94A3B8;
+}
+
+.reproductor-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.reproductor-buttons button {
     border: none;
+    background: transparent;
+    color: #FFFFFF;
 
-    background: #d7ff00;
-
-    color: #000;
-
-    padding: 14px 25px;
-
-    border-radius: 30px;
-
-    font-size: 15px;
-
-    font-weight: 700;
+    font-size: 20px;
 
     cursor: pointer;
-
-    transition: 0.2s;
 }
 
-.detalle-play:hover {
-    background: #efffa0;
+.reproductor-buttons .play-main {
+    width: 45px;
+    height: 45px;
 
-    transform: translateY(-2px);
+    border-radius: 50%;
+
+    background: #FF6500;
+    color: #FFFFFF;
 }
 
 
-/* FAVORITO */
+
+.reproductor-volume {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reproductor-volume input {
+    accent-color: #FF6500;
+}
+
+
+
+
+/* =========================================
+   FAVORITO
+========================================= */
 
 .detalle-favorite {
     width: 48px;
@@ -602,11 +576,11 @@ body {
 
     border-radius: 50%;
 
-    border: 1px solid #333;
+    border: 1px solid var(--border);
 
-    background: #111;
+    background: var(--surface);
 
-    color: #fff;
+    color: var(--text-primary);
 
     font-size: 19px;
 
@@ -616,15 +590,17 @@ body {
 }
 
 .detalle-favorite:hover {
-    border-color: #d7ff00;
+    border-color: var(--primary);
 
-    color: #d7ff00;
+    color: var(--primary);
+
+    background-color: var(--surface-hover);
 }
 
 
-/* ===
+/* =========================================
    DATOS
-=== */
+========================================= */
 
 .detalle-data {
     width: 100%;
@@ -633,9 +609,9 @@ body {
 
     grid-template-columns: repeat(3, 1fr);
 
-    border-top: 1px solid #252525;
+    border-top: 1px solid var(--border);
 
-    border-bottom: 1px solid #252525;
+    border-bottom: 1px solid var(--border);
 
     padding: 20px 0;
 }
@@ -651,7 +627,7 @@ body {
 }
 
 .detalle-data span {
-    color: #666;
+    color: var(--text-muted);
 
     font-size: 11px;
 
@@ -661,15 +637,15 @@ body {
 }
 
 .detalle-data strong {
-    color: #fff;
+    color: var(--text-primary);
 
     font-size: 14px;
 }
 
 
-/* ===
+/* =========================================
    SECCIONES DETALLE
-==== */
+========================================= */
 
 .detalle-section {
     max-width: 1200px;
@@ -682,7 +658,7 @@ body {
 
     margin-bottom: 25px;
 
-    color: #fff;
+    color: var(--text-primary);
 }
 
 .detalle-section > h2::after {
@@ -694,7 +670,7 @@ body {
 
     height: 3px;
 
-    background: #d7ff00;
+    background: var(--primary);
 
     margin-top: 10px;
 
@@ -702,9 +678,9 @@ body {
 }
 
 
-/* ==
-   ESTADÍSTICAS DETALLE
-=== */
+/* =========================================
+   ESTADÍSTICAS
+========================================= */
 
 .stats-grid {
     display: grid;
@@ -715,9 +691,9 @@ body {
 }
 
 .stat-card {
-    background: #0b0b0b;
+    background: var(--surface);
 
-    border: 1px solid #222;
+    border: 1px solid var(--border);
 
     border-radius: 12px;
 
@@ -727,7 +703,9 @@ body {
 }
 
 .stat-card:hover {
-    border-color: #d7ff00;
+    border-color: var(--primary);
+
+    background-color: var(--surface-hover);
 
     transform: translateY(-3px);
 }
@@ -735,7 +713,7 @@ body {
 .stat-card span {
     display: block;
 
-    color: #666;
+    color: var(--text-muted);
 
     font-size: 11px;
 
@@ -747,20 +725,20 @@ body {
 }
 
 .stat-card strong {
-    color: #d7ff00;
+    color: var(--primary);
 
     font-size: 25px;
 }
 
 
-/* =====
-   DESCRIPCIÓN DET
-== */
+/* =========================================
+   DESCRIPCIÓN
+========================================= */
 
 .description-card {
-    background: #0b0b0b;
+    background: var(--surface);
 
-    border: 1px solid #222;
+    border: 1px solid var(--border);
 
     border-radius: 12px;
 
@@ -768,7 +746,7 @@ body {
 }
 
 .description-card p {
-    color: #999;
+    color: var(--text-muted);
 
     line-height: 1.8;
 
@@ -778,18 +756,18 @@ body {
 }
 
 
-/* ====
-   BOTÓN
-== */
+/* =========================================
+   BOTÓN DETALLE
+========================================= */
 
 .detalle-btn {
     display: inline-block;
 
-    color: #fff;
+    color: var(--text-primary);
 
-    border: 1px solid #333;
+    border: 1px solid var(--border);
 
-    background: #0b0b0b;
+    background: var(--surface);
 
     padding: 12px 20px;
 
@@ -801,11 +779,11 @@ body {
 }
 
 .detalle-btn:hover {
-    color: #000;
+    color: var(--text-primary);
 
-    background: #d7ff00;
+    background: var(--primary);
 
-    border-color: #d7ff00;
+    border-color: var(--primary);
 }
 
 .detalle-bottom {
@@ -815,9 +793,9 @@ body {
 }
 
 
-/* ===
+/* =========================================
    ERROR
-=== */
+========================================= */
 
 .detalle-error {
     display: flex;
@@ -832,19 +810,248 @@ body {
 }
 
 .detalle-error h2 {
-    color: #d7ff00;
+    color: var(--primary);
 }
 
 .detalle-error p {
-    color: #888;
+    color: var(--text-muted);
 
     margin: 15px 0 25px;
 }
 
 
-/* ====
-   TABLET ERROR
-=== */
+/* =========================================
+   BOTÓN DETALLE CARD
+========================================= */
+
+.btn-detalle {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 12px;
+
+    padding: 10px 16px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 25px;
+
+    background: var(--surface);
+
+    color: var(--text-primary);
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+.btn-detalle:hover {
+    background: var(--primary);
+
+    border-color: var(--primary);
+
+    color: var(--text-primary);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 0 15px rgba(255, 101, 0, 0.2);
+}
+
+.btn-detalle i {
+    font-size: 14px;
+
+    transition: transform 0.2s ease;
+}
+
+.btn-detalle:hover i {
+    transform: translateX(3px);
+}
+
+
+/* =========================================
+   ERROR 404
+========================================= */
+
+.error-page {
+    min-height: calc(100vh - 70px);
+
+    background: var(--background);
+
+    color: var(--text-primary);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   CONTENIDO
+========================================= */
+
+.error-content {
+    max-width: 650px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* =========================================
+   ÍCONO
+========================================= */
+
+.error-icon {
+    width: 90px;
+
+    height: 90px;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    color: var(--text-primary);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 50px;
+
+    font-weight: bold;
+
+    margin-bottom: 30px;
+
+    box-shadow:
+        0 0 35px rgba(255, 101, 0, 0.15);
+}
+
+
+/* =========================================
+   ERROR CODE
+========================================= */
+
+.error-code {
+    color: var(--primary);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.error-content h1 {
+    font-size: clamp(40px, 6vw, 70px);
+
+    line-height: 1;
+
+    margin: 0 0 20px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================
+   TEXTO
+========================================= */
+
+.error-content p {
+    color: var(--text-muted);
+
+    font-size: 17px;
+
+    line-height: 1.6;
+
+    margin: 0 0 30px;
+}
+
+
+/* =========================================
+   BOTÓN ERROR
+========================================= */
+
+.error-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 14px 25px;
+
+    border-radius: 30px;
+
+    background: var(--primary);
+
+    color: var(--text-primary);
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+.error-button:hover {
+    background: #ff7a26;
+
+    color: var(--text-primary);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 20px rgba(255, 101, 0, 0.2);
+}
+
+
+/* =========================================
+   RESPONSIVE CATALOGO
+========================================= */
+
+@media (max-width: 900px) {
+
+    .songs-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================
+   RESPONSIVE DETALLE TABLET
+========================================= */
 
 @media (max-width: 950px) {
 
@@ -870,9 +1077,9 @@ body {
 }
 
 
-/* ===
-   CELULAR ERROR
-=== */
+/* =========================================
+   RESPONSIVE GENERAL CELULAR
+========================================= */
 
 @media (max-width: 700px) {
 
@@ -915,224 +1122,26 @@ body {
     .detalle-section {
         margin-top: 50px;
     }
-}
 
+    .catalogo {
+        padding: 40px 20px;
+    }
 
+    .catalogo-header h1 {
+        font-size: 42px;
+    }
 
+    .catalogo-title {
+        align-items: flex-start;
 
-.btn-detalle {
-    display: inline-flex;
+        flex-direction: column;
 
-    align-items: center;
-    justify-content: center;
+        gap: 15px;
+    }
 
-    gap: 8px;
-
-    margin-top: 12px;
-
-    padding: 10px 16px;
-
-    border: 1px solid #333;
-
-    border-radius: 25px;
-
-    background: #0b0b0b;
-
-    color: #fff;
-
-    text-decoration: none;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    transition: all 0.2s ease;
-}
-
-.btn-detalle:hover {
-    background: #d7ff00;
-
-    border-color: #d7ff00;
-
-    color: #000;
-
-    transform: translateY(-2px);
-
-    box-shadow: 0 0 15px rgba(215, 255, 0, 0.2);
-}
-
-.btn-detalle i {
-    font-size: 14px;
-
-    transition: transform 0.2s ease;
-}
-
-.btn-detalle:hover i {
-    transform: translateX(3px);
-}
-
-/* =================================
-   ERROR 404
-================================= */
-
-.error-page {
-    min-height: calc(100vh - 70px);
-
-    background: #000;
-
-    color: #fff;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 40px 20px;
-
-    text-align: center;
-}
-
-
-/* CONTENIDO */
-
-.error-content {
-    max-width: 650px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-}
-
-
-/* =================================
-   ÍCONO
-================================= */
-
-.error-icon {
-    width: 90px;
-
-    height: 90px;
-
-    border-radius: 50%;
-
-    background: #d7ff00;
-
-    color: #000;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 50px;
-
-    font-weight: bold;
-
-    margin-bottom: 30px;
-
-    box-shadow:
-        0 0 35px rgba(215, 255, 0, 0.15);
-}
-
-
-/* =================================
-   ERROR CODE
-================================= */
-
-.error-code {
-    color: #d7ff00;
-
-    font-size: 14px;
-
-    font-weight: 700;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 15px;
-}
-
-
-/* =================================
-   TÍTULO
-================================= */
-
-.error-content h1 {
-    font-size: clamp(40px, 6vw, 70px);
-
-    line-height: 1;
-
-    margin: 0 0 20px;
-
-    font-weight: 800;
-}
-
-
-/* =================================
-   TEXTO
-================================= */
-
-.error-content p {
-    color: #888;
-
-    font-size: 17px;
-
-    line-height: 1.6;
-
-    margin: 0 0 30px;
-}
-
-
-/* =================================
-   BOTÓN
-================================= */
-
-.error-button {
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 10px;
-
-    padding: 14px 25px;
-
-    border-radius: 30px;
-
-    background: #d7ff00;
-
-    color: #000;
-
-    text-decoration: none;
-
-    font-size: 15px;
-
-    font-weight: 700;
-
-    transition: 0.2s;
-}
-
-.error-button:hover {
-    background: #efffa0;
-
-    color: #000;
-
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 0 20px rgba(215, 255, 0, 0.2);
-}
-
-
-/* =================================
-   TABLET
-================================= */
-
-@media (max-width: 700px) {
+    .songs-grid {
+        grid-template-columns: 1fr;
+    }
 
     .error-page {
         padding: 30px 20px;
@@ -1154,9 +1163,9 @@ body {
 }
 
 
-/* =================================
-   CELULAR
-================================= */
+/* =========================================
+   CELULAR PEQUEÑO
+========================================= */
 
 @media (max-width: 450px) {
 
@@ -1196,432 +1205,5 @@ body {
         width: 100%;
 
         max-width: 280px;
-    }
-}
-
-/* =================================
-   REPRODUCTOR
-================================= */
-
-.reproductor {
-
-    position: fixed;
-
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-
-    height: 90px;
-
-    background: #080808;
-
-    border-top: 1px solid #252525;
-
-    z-index: 2000;
-
-    display: grid;
-
-    grid-template-columns: 280px 1fr 180px;
-
-    align-items: center;
-
-    gap: 30px;
-
-    padding: 12px 25px;
-
-    box-shadow:
-        0 -5px 30px rgba(0, 0, 0, 0.5);
-
-}
-
-
-/* =================================
-   INFORMACIÓN
-================================= */
-
-.reproductor-info {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    min-width: 0;
-}
-
-.reproductor-info img {
-
-    width: 60px;
-
-    height: 60px;
-
-    object-fit: cover;
-
-    border-radius: 6px;
-}
-
-.reproductor-info div {
-
-    min-width: 0;
-}
-
-.reproductor-info h4 {
-
-    color: white;
-
-    font-size: 14px;
-
-    margin: 0 0 5px;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-}
-
-.reproductor-info p {
-
-    color: #777;
-
-    font-size: 12px;
-
-    margin: 0;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-}
-
-
-/* =================================
-   CENTRO
-================================= */
-
-.reproductor-center {
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    gap: 5px;
-
-    min-width: 0;
-}
-
-
-/* =================================
-   BOTONES
-================================= */
-
-.reproductor-buttons {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-}
-
-.reproductor-buttons button {
-
-    background: transparent;
-
-    border: none;
-
-    color: #aaa;
-
-    font-size: 17px;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
-
-.reproductor-buttons button:hover {
-
-    color: #d7ff00;
-}
-
-
-/* BOTÓN PLAY */
-
-.reproductor-buttons .play-main {
-
-    width: 38px;
-
-    height: 38px;
-
-    border-radius: 50%;
-
-    background: #d7ff00;
-
-    color: #000;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 20px;
-}
-
-.reproductor-buttons .play-main:hover {
-
-    background: #efffa0;
-
-    color: #000;
-
-    transform: scale(1.05);
-}
-
-
-
-
-/* =================================
-   RANGE
-================================= */
-
-.reproductor input[type="range"] {
-
-    appearance: none;
-
-    -webkit-appearance: none;
-
-    height: 4px;
-
-    background: #333;
-
-    border-radius: 5px;
-
-    outline: none;
-
-    cursor: pointer;
-}
-
-
-/* TRACK */
-
-.reproductor input[type="range"] {
-
-    flex: 1;
-}
-
-
-/* THUMB */
-
-.reproductor input[type="range"]::-webkit-slider-thumb {
-
-    appearance: none;
-
-    -webkit-appearance: none;
-
-    width: 12px;
-
-    height: 12px;
-
-    border-radius: 50%;
-
-    background: #d7ff00;
-
-    cursor: pointer;
-}
-
-
-/* FIREFOX */
-
-.reproductor input[type="range"]::-moz-range-thumb {
-
-    width: 12px;
-
-    height: 12px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background: #d7ff00;
-
-    cursor: pointer;
-}
-
-
-/* =================================
-   VOLUMEN
-================================= */
-
-.reproductor-volume {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-}
-
-.reproductor-volume i {
-
-    color: #aaa;
-
-    font-size: 16px;
-}
-
-.reproductor-volume input {
-
-    width: 100px;
-}
-
-
-/* =================================
-   TABLET
-================================= */
-
-@media (max-width: 900px) {
-
-    .reproductor {
-
-        grid-template-columns: 220px 1fr 120px;
-
-        gap: 15px;
-
-        padding: 10px 15px;
-    }
-
-    .reproductor-info img {
-
-        width: 50px;
-
-        height: 50px;
-    }
-
-    .reproductor-volume input {
-
-        width: 70px;
-    }
-}
-
-
-/* =================================
-   CELULAR
-================================= */
-
-@media (max-width: 650px) {
-
-    .reproductor {
-
-        height: 125px;
-
-        display: grid;
-
-        grid-template-columns: 1fr auto;
-
-        grid-template-rows: 55px 45px;
-
-        gap: 5px 15px;
-
-        padding: 10px 15px;
-    }
-
-
-    /* INFORMACIÓN */
-
-    .reproductor-info {
-
-        grid-column: 1;
-
-        grid-row: 1;
-    }
-
-    .reproductor-info img {
-
-        width: 48px;
-
-        height: 48px;
-    }
-
-
-    /* BOTONES */
-
-    .reproductor-center {
-
-        display: contents;
-    }
-
-    .reproductor-buttons {
-
-        grid-column: 2;
-
-        grid-row: 1;
-
-        gap: 12px;
-    }
-
-
-    /* PROGRESO */
-
-    .reproductor-progress {
-
-        grid-column: 1 / -1;
-
-        grid-row: 2;
-
-        width: 100%;
-    }
-
-
-    /* VOLUMEN */
-
-    .reproductor-volume {
-
-        display: none;
-    }
-}
-
-
-/* =================================
-   CELULAR PEQUEÑO
-================================= */
-
-@media (max-width: 400px) {
-
-    .reproductor {
-
-        height: 120px;
-
-        padding: 8px 12px;
-    }
-
-    .reproductor-info h4 {
-
-        font-size: 13px;
-    }
-
-    .reproductor-info p {
-
-        font-size: 11px;
-    }
-
-    .reproductor-buttons {
-
-        gap: 7px;
-    }
-
-    .reproductor-buttons button {
-
-        font-size: 15px;
-    }
-
-    .reproductor-buttons .play-main {
-
-        width: 35px;
-
-        height: 35px;
     }
 }

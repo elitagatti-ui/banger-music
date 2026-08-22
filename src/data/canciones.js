@@ -76,7 +76,7 @@
         album: "Floricienta",
         año: 2004,
         genero: "pop",
-        imagen: "https://images.pexels.com/photos/31054418/pexels-photo-31054418.jpeg",
+        imagen: "https://images.pexels.com/photos/30650522/pexels-photo-30650522.jpeg",
         archivo: "#"
     },
     {
@@ -86,7 +86,7 @@
         album: "Vivi en Do",
         año: 2010,
         genero: "Reggae",
-        imagen: "https://images.pexels.com/photos/19548518/pexels-photo-19548518.jpeg",
+        imagen: "https://images.pexels.com/photos/13061567/pexels-photo-13061567.jpeg",
         archivo: "#"
     },
     {
@@ -95,7 +95,7 @@
         album: "lover",
         año: 2019,
         genero: "pop",
-        imagen: "https://images.pexels.com/photos/18544230/pexels-photo-18544230.jpeg",
+        imagen: "https://images.pexels.com/photos/13443071/pexels-photo-13443071.jpeg",
         archivo: "#"
     }
 
