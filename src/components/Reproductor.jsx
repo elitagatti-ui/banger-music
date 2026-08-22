@@ -27,3 +27,27 @@ function Reproductor({ cancion }) {
         }
 
     };
+        const actualizarProgreso = () => {
+
+        if (!audioRef.current) return;
+
+        setProgreso(audioRef.current.currentTime);
+
+    };
+    const cargarDuracion = () => {
+
+        if (!audioRef.current) return;
+
+        setDuracion(audioRef.current.duration);
+
+    };
+        const cambiarProgreso = (e) => {
+
+        const nuevoTiempo = Number(e.target.value);
+
+        audioRef.current.currentTime = nuevoTiempo;
+
+        setProgreso(nuevoTiempo);
+
+    };
+}

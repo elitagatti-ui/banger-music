@@ -1198,3 +1198,119 @@ body {
         max-width: 280px;
     }
 }
+
+/* =================================
+   REPRODUCTOR
+================================= */
+
+.reproductor {
+
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 90px;
+
+    background: #080808;
+
+    border-top: 1px solid #252525;
+
+    z-index: 2000;
+
+    display: grid;
+
+    grid-template-columns: 280px 1fr 180px;
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 12px 25px;
+
+    box-shadow:
+        0 -5px 30px rgba(0, 0, 0, 0.5);
+
+}
+
+
+/* =================================
+   INFORMACIÓN
+================================= */
+
+.reproductor-info {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 0;
+}
+
+.reproductor-info img {
+
+    width: 60px;
+
+    height: 60px;
+
+    object-fit: cover;
+
+    border-radius: 6px;
+}
+
+.reproductor-info div {
+
+    min-width: 0;
+}
+
+.reproductor-info h4 {
+
+    color: white;
+
+    font-size: 14px;
+
+    margin: 0 0 5px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.reproductor-info p {
+
+    color: #777;
+
+    font-size: 12px;
+
+    margin: 0;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =================================
+   CENTRO
+================================= */
+
+.reproductor-center {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+
+    min-width: 0;
+}
