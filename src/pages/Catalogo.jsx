@@ -16,7 +16,7 @@ function Catalogo() {
       <div className="catalogo-title">
         <h2>Todas las canciones</h2>
 
-        <button>+ Agregar canción</button>
+      
       </div>
       <div className="row g-4">
         {canciones.map((cancion) => (
