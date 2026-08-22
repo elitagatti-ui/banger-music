@@ -2,199 +2,118 @@ import { useParams, Link } from "react-router-dom";
 import canciones from "../data/canciones";
 
 function Detalle() {
+  const { id } = useParams();
 
-    const { id } = useParams();
+  const cancion = canciones.find((cancion) => cancion.id === Number(id));
 
-    const cancion = canciones.find(
-        (cancion) => cancion.id === Number(id)
-    );
-
-    if (!cancion) {
-        return (
-            <div className="detalle-page detalle-error">
-
-                <h2>🎵 Canción no encontrada</h2>
-
-                <p>
-                    La canción no existe o fue eliminada.
-                </p>
-
-                <Link to="/" className="detalle-btn">
-                    ← Volver al catálogo
-                </Link>
-
-            </div>
-        );
-    }
-
+  if (!cancion) {
     return (
+      <div className="detalle-page detalle-error">
+        <h2>🎵 Canción no encontrada</h2>
 
-        <main className="detalle-page">
+        <p>La canción no existe o fue eliminada.</p>
 
-            {/* INFORMACIÓN PRINCIPAL */}
+        <Link to="/" className="detalle-btn">
+          ← Volver al catálogo
+        </Link>
+      </div>
+    );
+  }
 
-            <section className="detalle-main">
+  return (
+    <main className="detalle-page">
+      <section className="detalle-main">
+        <div className="detalle-cover">
+          <img src={cancion.imagen} alt={cancion.nombre} />
+        </div>
 
-                {/* IMAGEN */}
+        <div className="detalle-info">
+          <span className="detalle-label">CANCIÓN</span>
 
-                <div className="detalle-cover">
+          <h1>{cancion.nombre}</h1>
 
-                    <img
-                        src={cancion.imagen}
-                        alt={cancion.nombre}
-                    />
+          <h2>Artista: {cancion.artista}</h2>
 
-                </div>
+          <p className="detalle-album">
+            Álbum: <strong>{cancion.album}</strong>
+          </p>
 
+          <div className="detalle-actions">
+            <button className="detalle-play">
+              <i className="bi bi-play-fill"></i>
+              Reproducir canción
+            </button>
+          </div>
 
-                {/* INFORMACIÓN */}
+          {/* DATOS */}
 
-                <div className="detalle-info">
-
-                    <span className="detalle-label">
-                        CANCIÓN
-                    </span>
-
-                    <h1>
-                        {cancion.nombre}
-                    </h1>
-
-                    <h2>
-                        Artista: {cancion.artista}
-                    </h2>
-
-                    <p className="detalle-album">
-                        Álbum: <strong>{cancion.album}</strong>
-                    </p>
-
-
-                    {/* BOTONES */}
-
-                    <div className="detalle-actions">
-
-                        <button className="detalle-play">
-                            <i className="bi bi-play-fill"></i>
-                            Reproducir canción
-                        </button>
-
-                    </div>
-
-
-                    {/* DATOS */}
-
-                    <div className="detalle-data">
-
-                        <div>
-                            <span>GÉNERO</span>
-                            <strong>{cancion.genero}</strong>
-                        </div>
-
-                        <div>
-                            <span>AÑO</span>
-                            <strong>{cancion.año}</strong>
-                        </div>
-
-                        <div>
-                            <span>ÁLBUM</span>
-                            <strong>{cancion.album}</strong>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            {/* ESTADÍSTICAS */}
-
-            <section className="detalle-section">
-
-                <h2>
-                    Estadísticas
-                </h2>
-
-                <div className="stats-grid">
-
-                    <div className="stat-card">
-
-                        <span>
-                            ▶ REPRODUCCIONES
-                        </span>
-
-                        <strong>
-                            {cancion.reproducciones || "1.2 M"}
-                        </strong>
-
-                    </div>
-
-
-                    <div className="stat-card">
-
-                        <span>
-                            ♫ GÉNERO
-                        </span>
-
-                        <strong>
-                            {cancion.genero}
-                        </strong>
-
-                    </div>
-
-
-                    <div className="stat-card">
-
-                        <span>
-                            ★ PREMIOS
-                        </span>
-
-                        <strong>
-                            {cancion.premios || "Reconocida"}
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            {/* DESCRIPCIÓN */}
-
-            <section className="detalle-section">
-
-                <h2>
-                    Sobre esta canción
-                </h2>
-
-                <div className="description-card">
-
-                    <p>
-                        {cancion.descripcion ||
-                            `${cancion.nombre} es una canción interpretada por ${cancion.artista}, perteneciente al álbum ${cancion.album}. Su estilo combina diferentes elementos musicales y se convirtió en una canción reconocida dentro de su género.`
-                        }
-                    </p>
-
-                </div>
-
-            </section>
-
-
-            {/* VOLVER */}
-
-            <div className="detalle-bottom">
-
-                <Link
-                    to="/"
-                    className="detalle-btn"
-                >
-                    ← Volver al catálogo
-                </Link>
-
+          <div className="detalle-data">
+            <div>
+              <span>GÉNERO</span>
+              <strong>{cancion.genero}</strong>
             </div>
 
-        </main>
-    );
+            <div>
+              <span>AÑO</span>
+              <strong>{cancion.año}</strong>
+            </div>
+
+            <div>
+              <span>ÁLBUM</span>
+              <strong>{cancion.album}</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ESTADÍSTICAS */}
+
+      <section className="detalle-section">
+        <h2>Estadísticas</h2>
+
+        <div className="stats-grid">
+          <div className="stat-card">
+            <span>▶ REPRODUCCIONES</span>
+
+            <strong>{cancion.reproducciones || "1.2 M"}</strong>
+          </div>
+
+          <div className="stat-card">
+            <span>♫ GÉNERO</span>
+
+            <strong>{cancion.genero}</strong>
+          </div>
+
+          <div className="stat-card">
+            <span>★ PREMIOS</span>
+
+            <strong>{cancion.premios || "Reconocida"}</strong>
+          </div>
+        </div>
+      </section>
+
+      {/* DESCRIPCIÓN */}
+
+      <section className="detalle-section">
+        <h2>Sobre esta canción</h2>
+
+        <div className="description-card">
+          <p>
+            {cancion.descripcion ||
+              `${cancion.nombre} es una canción interpretada por ${cancion.artista}, perteneciente al álbum ${cancion.album}. Su estilo combina diferentes elementos musicales y se convirtió en una canción reconocida dentro de su género.`}
+          </p>
+        </div>
+      </section>
+
+      {/* VOLVER */}
+
+      <div className="detalle-bottom">
+        <Link to="/" className="detalle-btn">
+          ← Volver al catálogo
+        </Link>
+      </div>
+    </main>
+  );
 }
 
 export default Detalle;
