@@ -11,9 +11,9 @@ body {
 }
 
 
-/* =========================================
-   VARIABLES DEL THEME DARK
-========================================= */
+/* 
+   paleta de colore
+ */
 
 :root {
     --primary: #FF6500;
@@ -26,9 +26,9 @@ body {
 }
 
 
-/* =========================================
-   NAVBAR
-========================================= */
+/* 
+   navbar
+*/
 
 .navbar {
     width: 100%;
@@ -47,9 +47,9 @@ body {
 }
 
 
-/* =========================================
-   LOGO
-========================================= */
+/* 
+   logo
+*/
 
 .logo {
     display: flex;
@@ -83,9 +83,9 @@ body {
 }
 
 
-/* =========================================
-   LINKS
-========================================= */
+/*
+   links
+*/
 
 .nav-links {
     display: flex;
@@ -112,9 +112,9 @@ body {
 }
 
 
-/* =========================================
-   SEPARADOR
-========================================= */
+/*
+   separador
+ */
 
 .separator {
     width: 1px;
@@ -124,9 +124,9 @@ body {
 }
 
 
-/* =========================================
-   CUENTA
-========================================= */
+/* 
+   cuenta
+*/
 
 .account-links {
     display: flex;
@@ -136,9 +136,9 @@ body {
 }
 
 
-/* =========================================
-   BOTÓN PRINCIPAL
-========================================= */
+/* 
+   boton principal
+ */
 
 .account-links button {
     border: none;
@@ -164,14 +164,14 @@ body {
 
     transform: scale(1.03);
 }
-/* =========================================
-   RESPONSIVE NAVBAR
-========================================= */
+/* 
+   responsive navbar
+ */
 
 
-/* =========================================
-   HAMBURGUESA
-========================================= */
+/* 
+   hamburgesa
+ */
 
 .hamburger {
     display: none;
@@ -208,19 +208,18 @@ body {
 }
 
 
-/* =========================================
-   CUENTA MOBILE
-========================================= */
+/* 
+   cuenta movile
+*/
 
 .mobile-account {
     display: none;
 }
 
 
-/* =========================================
-   TABLET
-   768px - 1023px
-========================================= */
+/* 
+   tablet
+*/
 
 @media (max-width: 1023px) {
 
@@ -268,10 +267,9 @@ body {
 }
 
 
-/* =========================================
-   CELULAR
-   Hasta 767px
-========================================= */
+/* 
+   celular
+*/
 
 @media (max-width: 767px) {
 
@@ -288,7 +286,7 @@ body {
     }
 
 
-    /* LOGO */
+    /* logo */
 
     .logo {
         margin-right: auto;
@@ -306,7 +304,7 @@ body {
     }
 
 
-    /* OCULTAR CUENTA DESKTOP */
+    /* ocultar cuenta desckoup */
 
     .account-links {
         display: none;
@@ -317,16 +315,16 @@ body {
     }
 
 
-    /* MOSTRAR HAMBURGUESA */
+    /* mostrar hamburgesa */
 
     .hamburger {
         display: flex;
     }
 
 
-    /* =====================================
-       MENÚ MOBILE
-    ===================================== */
+    /* 
+       menu movil
+    */
 
     .nav-links {
         position: absolute;
@@ -364,7 +362,7 @@ body {
     }
 
 
-    /* MENÚ ABIERTO */
+    /* menu abierto */
 
     .nav-links.menu-abierto {
         visibility: visible;
@@ -375,7 +373,7 @@ body {
     }
 
 
-    /* LINKS */
+    /* links */
 
     .nav-links > a {
         width: 100%;
@@ -396,9 +394,9 @@ body {
     }
 
 
-    /* =====================================
-       CUENTA MOBILE
-    ===================================== */
+    /* 
+       cuenta movil
+    */
 
     .mobile-account {
         display: flex;
@@ -462,9 +460,9 @@ body {
     }
 
 
-    /* =====================================
-       ANIMACIÓN HAMBURGUESA → X
-    ===================================== */
+    /* 
+       animacion boton hamburgesa
+*/
 
     .hamburger.activo span:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
@@ -481,10 +479,9 @@ body {
 }
 
 
-/* =========================================
-   CELULAR PEQUEÑO
-   Hasta 480px
-========================================= */
+/* 
+   celular pequeño
+*/
 
 @media (max-width: 480px) {
 
@@ -517,9 +514,9 @@ body {
     }
 }
 
-/* =========================================
-   CARDS DE CANCIONES
-========================================= */
+/* 
+   cards canciones
+*/
 
 .songs-grid .card {
     height: 100%;
@@ -556,9 +553,9 @@ body {
     margin-bottom: 6px;
 }
 
-/* =========================================
-   CONTENEDOR DE BOTONES
-========================================= */
+/* 
+   contenedor de detalle
+ */
 
 .songs-grid .card-body {
     position: relative;
@@ -570,9 +567,9 @@ body {
     margin-top: auto;
 }
 
-/* =========================================
-   BOTÓN REPRODUCIR
-========================================= */
+/* 
+   boton reproducir
+ */
 
 .btn-reproducir {
     background-color: var(--primary);
@@ -608,9 +605,9 @@ body {
     font-size: 20px;
 }
 
-/* =========================================
-   BOTÓN DETALLE
-========================================= */
+/* 
+   boton detalle
+*/
 
 .btn-detalle {
     margin-top: 10px;
@@ -642,9 +639,9 @@ body {
     background-color: var(--primary);
     color: var(--text-primary);
 }
-/* =========================================
-   BOTONES DE LA CARD
-========================================= */
+/* 
+   botones de card
+*/
 
 .card-buttons {
     margin-top: auto;
@@ -657,9 +654,9 @@ body {
     width: 100%;
 }
 
-/* =========================================
-   VOLVER
-========================================= */
+/* 
+   volver detalle
+ */
 
 .detalle-back {
     display: inline-block;
@@ -680,9 +677,9 @@ body {
 }
 
 
-/* =========================================
-   CONTENIDO PRINCIPAL
-========================================= */
+/* 
+   contenido pticipal. detalle
+*/
 
 .detalle-main {
     max-width: 1200px;
@@ -699,9 +696,9 @@ body {
 }
 
 
-/* =========================================
-   PORTADA
-========================================= */
+/* 
+   portada de detalle
+*/
 
 .detalle-cover {
     width: 100%;
@@ -729,9 +726,9 @@ body {
 }
 
 
-/* =========================================
-   INFORMACIÓN
-========================================= */
+/* 
+   informacion detalle
+*/
 
 .detalle-info {
     display: flex;
@@ -742,9 +739,9 @@ body {
 }
 
 
-/* =========================================
-   ETIQUETA
-========================================= */
+/* 
+   etiqueta detalle
+*/
 
 .detalle-label {
     color: var(--primary);
@@ -759,9 +756,9 @@ body {
 }
 
 
-/* =========================================
-   TÍTULO
-========================================= */
+/* 
+   titulo
+ */
 
 .detalle-info h1 {
     font-size: clamp(40px, 5vw, 70px);
@@ -776,9 +773,9 @@ body {
 }
 
 
-/* =========================================
-   ARTISTA
-========================================= */
+/* 
+   artista
+*/
 
 .detalle-info h2 {
     color: var(--text-muted);
@@ -791,9 +788,9 @@ body {
 }
 
 
-/* =========================================
-   ÁLBUM
-========================================= */
+/* 
+   album
+*/
 
 .detalle-album {
     color: var(--text-muted);
@@ -808,9 +805,9 @@ body {
 }
 
 
-/* =========================================
-   BOTONES DETALLE
-========================================= */
+/* 
+   botones detalle
+*/
 
 .detalle-actions {
     display: flex;
@@ -823,9 +820,9 @@ body {
 }
 
 
-/* =========================================
-   REPRODUCIR
-========================================= */
+/* 
+   reproducir
+*/
 
 .reproductor {
     position: fixed;
@@ -917,9 +914,9 @@ body {
 
 
 
-/* =========================================
-   FAVORITO
-========================================= */
+/* 
+   favorito
+*/
 
 .detalle-favorite {
     width: 48px;
@@ -950,9 +947,9 @@ body {
 }
 
 
-/* =========================================
-   DATOS
-========================================= */
+/* 
+   datos
+*/
 
 .detalle-data {
     width: 100%;
@@ -995,9 +992,9 @@ body {
 }
 
 
-/* =========================================
-   SECCIONES DETALLE
-========================================= */
+/* 
+   secciones de detalle
+*/
 
 .detalle-section {
     max-width: 1200px;
@@ -1030,9 +1027,9 @@ body {
 }
 
 
-/* =========================================
-   ESTADÍSTICAS
-========================================= */
+/* 
+   estadistica detalle
+*/
 
 .stats-grid {
     display: grid;
@@ -1083,9 +1080,9 @@ body {
 }
 
 
-/* =========================================
-   DESCRIPCIÓN
-========================================= */
+/* 
+   descripcion tarjeta
+*/
 
 .description-card {
     background: var(--surface);
@@ -1108,9 +1105,9 @@ body {
 }
 
 
-/* =========================================
-   BOTÓN DETALLE
-========================================= */
+/* 
+   boton detalle
+*/
 
 .detalle-btn {
     display: inline-block;
@@ -1145,9 +1142,9 @@ body {
 }
 
 
-/* =========================================
-   ERROR
-========================================= */
+/* 
+   error
+*/
 
 .detalle-error {
     display: flex;
@@ -1172,9 +1169,9 @@ body {
 }
 
 
-/* =========================================
-   BOTÓN DETALLE CARD
-========================================= */
+/* 
+   boton detalle card
+*/
 
 .btn-detalle {
     display: inline-flex;
@@ -1228,9 +1225,9 @@ body {
 }
 
 
-/* =========================================
-   ERROR 404
-========================================= */
+/* 
+   error 404
+*/
 
 .error-page {
     min-height: calc(100vh - 70px);
@@ -1251,9 +1248,9 @@ body {
 }
 
 
-/* =========================================
-   CONTENIDO
-========================================= */
+/* 
+   contenido error
+*/
 
 .error-content {
     max-width: 650px;
@@ -1266,9 +1263,9 @@ body {
 }
 
 
-/* =========================================
-   ÍCONO
-========================================= */
+/*
+   icono error
+*/
 
 .error-icon {
     width: 90px;
@@ -1298,9 +1295,9 @@ body {
 }
 
 
-/* =========================================
-   ERROR CODE
-========================================= */
+/* 
+   codigo error 404
+ */
 
 .error-code {
     color: var(--primary);
@@ -1315,9 +1312,9 @@ body {
 }
 
 
-/* =========================================
-   TÍTULO
-========================================= */
+/* 
+   titulo error
+ */
 
 .error-content h1 {
     font-size: clamp(40px, 6vw, 70px);
@@ -1330,9 +1327,9 @@ body {
 }
 
 
-/* =========================================
-   TEXTO
-========================================= */
+/* 
+   texto error
+*/
 
 .error-content p {
     color: var(--text-muted);
@@ -1345,9 +1342,9 @@ body {
 }
 
 
-/* =========================================
-   BOTÓN ERROR
-========================================= */
+/* 
+   boton error
+*/
 
 .error-button {
     display: inline-flex;
@@ -1387,9 +1384,9 @@ body {
 }
 
 
-/* =========================================
-   RESPONSIVE CATALOGO
-========================================= */
+/* 
+   responsive catalogo
+ */
 
 @media (max-width: 900px) {
 
@@ -1401,9 +1398,9 @@ body {
 }
 
 
-/* =========================================
-   RESPONSIVE DETALLE TABLET
-========================================= */
+/* 
+   responsive table detalle
+*/
 
 @media (max-width: 950px) {
 
@@ -1429,9 +1426,9 @@ body {
 }
 
 
-/* =========================================
-   RESPONSIVE GENERAL CELULAR
-========================================= */
+/* 
+   responsive celular pag detalle
+ */
 
 @media (max-width: 700px) {
 
@@ -1491,6 +1488,8 @@ body {
         gap: 15px;
     }
 
+    
+
     .songs-grid {
         grid-template-columns: 1fr;
     }
@@ -1515,47 +1514,181 @@ body {
 }
 
 
-/* =========================================
-   CELULAR PEQUEÑO
-========================================= */
 
-@media (max-width: 450px) {
+/* 
+   buscador
+ */
 
-    .error-page {
-        min-height: calc(100vh - 65px);
+.buscador-catalogo {
+    width: 100%;
+    max-width: 650px;
 
-        padding: 25px 18px;
+    margin: 0 auto 50px;
+
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+
+    background-color: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 30px;
+
+    padding: 0 18px;
+
+    transition: 0.2s;
+}
+
+
+/* icono */
+
+.buscador-catalogo > i {
+    color: var(--text-muted);
+
+    font-size: 20px;
+
+    margin-right: 12px;
+}
+
+
+/* input buscador */
+
+.buscador-catalogo input {
+    flex: 1;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text-primary);
+
+    font-size: 15px;
+}
+
+.buscador-catalogo input::placeholder {
+    color: var(--text-muted);
+}
+
+
+/* efecto hacer clik*/
+
+.buscador-catalogo:focus-within {
+    border-color: var(--primary);
+
+    box-shadow: 0 0 0 2px rgba(255, 101, 0, 0.15);
+}
+
+
+/* 
+   boton limpiar
+ */
+
+.btn-limpiar-busqueda {
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background-color: transparent;
+
+    color: var(--text-muted);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btn-limpiar-busqueda:hover {
+    color: var(--primary);
+
+    background-color: var(--background);
+}
+
+
+/* 
+   sin resultado buscador
+ */
+
+.sin-resultados {
+    min-height: 250px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.sin-resultados i {
+    color: var(--primary);
+
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+.sin-resultados h3 {
+    color: var(--text-primary);
+
+    margin-bottom: 8px;
+}
+
+.sin-resultados p {
+    color: var(--text-muted);
+}
+
+
+/* 
+   responsiv buscador
+ */
+
+@media (max-width: 767px) {
+
+    .buscador-catalogo {
+        height: 50px;
+
+        margin-bottom: 35px;
+
+        padding: 0 15px;
     }
 
-    .error-icon {
-        width: 65px;
-
-        height: 65px;
-
-        font-size: 36px;
-    }
-
-    .error-code {
-        font-size: 12px;
-
-        letter-spacing: 2px;
-    }
-
-    .error-content h1 {
-        font-size: 38px;
-    }
-
-    .error-content p {
+    .buscador-catalogo input {
         font-size: 14px;
     }
 
-    .error-content p br {
-        display: none;
+    .buscador-catalogo > i {
+        font-size: 18px;
+
+        margin-right: 10px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .buscador-catalogo {
+        height: 48px;
+
+        border-radius: 25px;
     }
 
-    .error-button {
-        width: 100%;
-
-        max-width: 280px;
+    .buscador-catalogo input {
+        font-size: 13px;
     }
 }
