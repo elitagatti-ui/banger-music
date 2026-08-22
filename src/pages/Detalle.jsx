@@ -39,9 +39,9 @@ function Detalle() {
           </p>
 
           <div className="detalle-actions">
-            <button className="detalle-play">
+            <button className="btn-detalle">
               <i className="bi bi-play-fill"></i>
-              Reproducir canción
+              Agregar a Playlist
             </button>
           </div>
 
