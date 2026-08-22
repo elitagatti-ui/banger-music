@@ -1,107 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const [menuAbierto, setMenuAbierto] = useState(false);
 
-    const [menuAbierto, setMenuAbierto] = useState(false);
+  const cerrarMenu = () => {
+    setMenuAbierto(false);
+  };
 
-    const cerrarMenu = () => {
-        setMenuAbierto(false);
-    };
+  return (
+    <nav className="navbar">
+      {/* LOGO */}
+      <div className="logo">
+        <div className="logo-icon">♪</div>
 
-    return (
+        <span>Banger-MusicA</span>
+      </div>
 
-        <nav className="navbar">
+      {/* LINKS */}
+      <div className={`nav-links ${menuAbierto ? "menu-abierto" : ""}`}>
+        <Link to="/" onClick={cerrarMenu}>
+          inicio
+        </Link>
 
-            {/* LOGO */}
-            <div className="logo">
+        <Link to="/detalle" onClick={cerrarMenu}>
+          Explorar
+        </Link>
 
-                <div className="logo-icon">
-                    ♪
-                </div>
+        <Link to="/playlists" onClick={cerrarMenu}>
+          Playlists
+        </Link>
 
-                <span>Banger-MusicA</span>
+        <Link to="/ayuda" onClick={cerrarMenu}>
+          Ayuda
+        </Link>
 
-            </div>
+        <div className="mobile-account">
+          <a href="/" onClick={cerrarMenu}>
+            Registrarse
+          </a>
 
+          <a href="/" onClick={cerrarMenu}>
+            Iniciar sesión
+          </a>
 
-            {/* LINKS */}
-            <div className={`nav-links ${menuAbierto ? "menu-abierto" : ""}`}>
+          <button onClick={cerrarMenu}>Probar ahora</button>
+        </div>
+      </div>
 
-                <Link to="/" onClick={cerrarMenu}>
-                    inicio
-                </Link>
+      <div className="separator"></div>
 
-                <Link to="/detalle" onClick={cerrarMenu}>
-                    Explorar
-                </Link>
+      <div className="account-links">
+        <a href="/">Registrarse</a>
 
-                <Link to="/playlists" onClick={cerrarMenu}>
-                    Playlists
-                </Link>
+        <a href="/">Iniciar sesión</a>
 
-                <Link to="/ayuda" onClick={cerrarMenu}>
-                    Ayuda
-                </Link>
+        <button>Probar ahora</button>
+      </div>
 
-
-                {/* CUENTA PARA CELULAR */}
-                <div className="mobile-account">
-
-                    <a href="/" onClick={cerrarMenu}>
-                        Registrarse
-                    </a>
-
-                    <a href="/" onClick={cerrarMenu}>
-                        Iniciar sesión
-                    </a>
-
-                    <button onClick={cerrarMenu}>
-                        Probar ahora
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            {/* SEPARADOR */}
-            <div className="separator"></div>
-
-
-            {/* CUENTA DESKTOP */}
-            <div className="account-links">
-
-                <a href="/">
-                    Registrarse
-                </a>
-
-                <a href="/">
-                    Iniciar sesión
-                </a>
-
-                <button>
-                    Probar ahora
-                </button>
-
-            </div>
-
-
-            {/* BOTÓN HAMBURGUESA */}
-            <button
-                className={`hamburger ${menuAbierto ? "activo" : ""}`}
-                onClick={() => setMenuAbierto(!menuAbierto)}
-                aria-label="Abrir menú"
-            >
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </button>
-
-        </nav>
-    );
+      {/* BOTÓN HAMBURGUESA */}
+      <button
+        className={`hamburger ${menuAbierto ? "activo" : ""}`}
+        onClick={() => setMenuAbierto(!menuAbierto)}
+        aria-label="Abrir menú"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  );
 }
 
 export default Navbar;
