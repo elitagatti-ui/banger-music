@@ -1,0 +1,30 @@
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: #121824;
+}
+
+.login-title {
+  color: #FF6500;
+}
+
+.btn-primary-banger {
+  background-color: #FF6500;
+  color: #FFFFFF;
+  border: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-primary-banger:hover {
+  background-color: #e05800;
+  color: #FFFFFF;
+}
+
+.text-banger-link {
+  color: #FF6500;
+  text-decoration: none;
+}
+
+.text-banger-link:hover {
+  text-decoration: underline;
+}
