@@ -10,7 +10,7 @@ function Reproductor({ cancion }) {
   return (
     <div className="reproductor">
 
-      {/* INFORMACIÓN */}
+      
 
       <div className="reproductor-info">
 
@@ -28,7 +28,7 @@ function Reproductor({ cancion }) {
       </div>
 
 
-      {/* CONTROLES */}
+    
 
       <div className="reproductor-center">
 
@@ -53,7 +53,7 @@ function Reproductor({ cancion }) {
       </div>
 
 
-      {/* VOLUMEN */}
+   
 
       <div className="reproductor-volume">
 
