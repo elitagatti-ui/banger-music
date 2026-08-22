@@ -38,7 +38,7 @@ function Catalogo() {
       <section className="catalogo-header">
         <p>DESCUBRÍ MÚSICA</p>
 
-        <h1>Catálogo</h1>
+      
 
         <span>Cuando las Palabras fallan, La Música habla.</span>
       </section>
