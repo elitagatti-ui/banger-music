@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
 function Reproductor({ cancion }) {
-  const audioRef = useRef(null);
-
   const [volumen, setVolumen] = useState(1);
 
   // reproducir/ pausar
@@ -13,8 +11,6 @@ function Reproductor({ cancion }) {
     const nuevoVolumen = Number(e.target.value);
 
     setVolumen(nuevoVolumen);
-
-    audioRef.current.volume = nuevoVolumen;
   };
 
   return (
