@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-function Cancion({ id, nombre, artista, imagen,album,genero }) {
+function Cancion({ id, nombre, artista, imagen,album,genero , onPlay}) {
 
     return (
         <div className="card bg-dark text-white h-100">
@@ -26,7 +26,10 @@ function Cancion({ id, nombre, artista, imagen,album,genero }) {
                     {genero}
                 </p>
 
-                <button className="btn-reproducir">
+                <button
+    className="btn-reproducir"
+    onClick={onPlay}
+>
     <i className="bi bi-play-fill"></i>
     Reproducir
 </button>

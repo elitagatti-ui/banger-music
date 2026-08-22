@@ -1,53 +1,72 @@
 import { useEffect, useRef, useState } from "react";
 
 function Reproductor({ cancion }) {
+  const audioRef = useRef(null);
 
-    const audioRef = useRef(null);
+  const [volumen, setVolumen] = useState(1);
 
-    const [reproduciendo, setReproduciendo] = useState(false);
-    const [progreso, setProgreso] = useState(0);
-    const [duracion, setDuracion] = useState(0);
-    const [volumen, setVolumen] = useState(1);
+  // reproducir/ pausar
+  //
 
+  const togglePlay = () => {};
+  const cambiarVolumen = (e) => {
+    const nuevoVolumen = Number(e.target.value);
 
-  
+    setVolumen(nuevoVolumen);
 
-    const togglePlay = () => {
+    audioRef.current.volume = nuevoVolumen;
+  };
 
-        if (!cancion) return;
+  return (
+    <div className="reproductor">
+      {/* INFORMACIÓN */}
 
-        if (reproduciendo) {
+      <div className="reproductor-info">
+        <img src={cancion.imagen} alt={cancion.nombre} />
 
-            audioRef.current.pause();
+        <div>
+          <h4>{cancion.nombre}</h4>
 
-        } else {
+          <p>{cancion.artista}</p>
+        </div>
+      </div>
 
-            audioRef.current.play();
+      {/* controles */}
 
-        }
+      <div className="reproductor-center">
+        <div className="reproductor-buttons">
+          <button>
+            <i className="bi bi-skip-start-fill"></i>
+          </button>
 
-    };
-        const actualizarProgreso = () => {
+          <button className="play-main" onClick={togglePlay}>
+            <i className={"bi bi-play-fill"}></i>
+          </button>
 
-        if (!audioRef.current) return;
+          <button>
+            <i className="bi bi-skip-end-fill"></i>
+          </button>
+        </div>
 
-        setProgreso(audioRef.current.currentTime);
+        <div className="reproductor-progress"></div>
+      </div>
 
-    };
-    const cargarDuracion = () => {
+      {/* VOLUMEN */}
 
-        if (!audioRef.current) return;
+      <div className="reproductor-volume">
+        <i className="bi bi-volume-up-fill"></i>
 
-        setDuracion(audioRef.current.duration);
-
-    };
-        const cambiarProgreso = (e) => {
-
-        const nuevoTiempo = Number(e.target.value);
-
-        audioRef.current.currentTime = nuevoTiempo;
-
-        setProgreso(nuevoTiempo);
-
-    };
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.01"
+          value={volumen}
+          onChange={cambiarVolumen}
+        />
+      </div>
+    </div>
+  );
 }
+
+export default Reproductor;

@@ -1314,3 +1314,314 @@ body {
 
     min-width: 0;
 }
+
+
+/* =================================
+   BOTONES
+================================= */
+
+.reproductor-buttons {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+}
+
+.reproductor-buttons button {
+
+    background: transparent;
+
+    border: none;
+
+    color: #aaa;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.reproductor-buttons button:hover {
+
+    color: #d7ff00;
+}
+
+
+/* BOTÓN PLAY */
+
+.reproductor-buttons .play-main {
+
+    width: 38px;
+
+    height: 38px;
+
+    border-radius: 50%;
+
+    background: #d7ff00;
+
+    color: #000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 20px;
+}
+
+.reproductor-buttons .play-main:hover {
+
+    background: #efffa0;
+
+    color: #000;
+
+    transform: scale(1.05);
+}
+
+
+
+
+/* =================================
+   RANGE
+================================= */
+
+.reproductor input[type="range"] {
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    height: 4px;
+
+    background: #333;
+
+    border-radius: 5px;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+
+/* TRACK */
+
+.reproductor input[type="range"] {
+
+    flex: 1;
+}
+
+
+/* THUMB */
+
+.reproductor input[type="range"]::-webkit-slider-thumb {
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    width: 12px;
+
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #d7ff00;
+
+    cursor: pointer;
+}
+
+
+/* FIREFOX */
+
+.reproductor input[type="range"]::-moz-range-thumb {
+
+    width: 12px;
+
+    height: 12px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #d7ff00;
+
+    cursor: pointer;
+}
+
+
+/* =================================
+   VOLUMEN
+================================= */
+
+.reproductor-volume {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.reproductor-volume i {
+
+    color: #aaa;
+
+    font-size: 16px;
+}
+
+.reproductor-volume input {
+
+    width: 100px;
+}
+
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 900px) {
+
+    .reproductor {
+
+        grid-template-columns: 220px 1fr 120px;
+
+        gap: 15px;
+
+        padding: 10px 15px;
+    }
+
+    .reproductor-info img {
+
+        width: 50px;
+
+        height: 50px;
+    }
+
+    .reproductor-volume input {
+
+        width: 70px;
+    }
+}
+
+
+/* =================================
+   CELULAR
+================================= */
+
+@media (max-width: 650px) {
+
+    .reproductor {
+
+        height: 125px;
+
+        display: grid;
+
+        grid-template-columns: 1fr auto;
+
+        grid-template-rows: 55px 45px;
+
+        gap: 5px 15px;
+
+        padding: 10px 15px;
+    }
+
+
+    /* INFORMACIÓN */
+
+    .reproductor-info {
+
+        grid-column: 1;
+
+        grid-row: 1;
+    }
+
+    .reproductor-info img {
+
+        width: 48px;
+
+        height: 48px;
+    }
+
+
+    /* BOTONES */
+
+    .reproductor-center {
+
+        display: contents;
+    }
+
+    .reproductor-buttons {
+
+        grid-column: 2;
+
+        grid-row: 1;
+
+        gap: 12px;
+    }
+
+
+    /* PROGRESO */
+
+    .reproductor-progress {
+
+        grid-column: 1 / -1;
+
+        grid-row: 2;
+
+        width: 100%;
+    }
+
+
+    /* VOLUMEN */
+
+    .reproductor-volume {
+
+        display: none;
+    }
+}
+
+
+/* =================================
+   CELULAR PEQUEÑO
+================================= */
+
+@media (max-width: 400px) {
+
+    .reproductor {
+
+        height: 120px;
+
+        padding: 8px 12px;
+    }
+
+    .reproductor-info h4 {
+
+        font-size: 13px;
+    }
+
+    .reproductor-info p {
+
+        font-size: 11px;
+    }
+
+    .reproductor-buttons {
+
+        gap: 7px;
+    }
+
+    .reproductor-buttons button {
+
+        font-size: 15px;
+    }
+
+    .reproductor-buttons .play-main {
+
+        width: 35px;
+
+        height: 35px;
+    }
+}
