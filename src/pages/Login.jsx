@@ -79,8 +79,7 @@ const Login = () => {
       <div className="card p-4 text-white shadow-lg login-card position-relative">
         <Link
           to="/"
-          className="position-absolute top-0 end-0 p-3 text-muted"
-          style={{ textDecoration: "none" }}
+          className="position-absolute top-0 end-0 p-3 text-muted text-decoration-none"
         >
           <i className="bi bi-x-lg"></i>
         </Link>

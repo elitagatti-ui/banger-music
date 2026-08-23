@@ -5,6 +5,7 @@ import Catalogo from "./pages/Catalogo";
 import Detalle from "./pages/Detalle";
 import Error from "./pages/PaginaError";
 import Login from "./pages/Login"
+import Registro from "./pages/Registro";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Catalogo />} />
         <Route path="/detalle/:id" element={<Detalle />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Registro />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
