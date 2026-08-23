@@ -1724,3 +1724,8 @@ body {
         font-size: 13px;
     }
 }
+.user-display-name {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
