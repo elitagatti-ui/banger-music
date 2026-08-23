@@ -9,12 +9,12 @@ const ProtectorRutas = () => {
     return <Navigate to="/login" replace />;
   }
 
-  // Si hay usuario pero su rol no es admin, redirige a / con replace
+  // Si hay usuario pero su rol no es admin, redirige al inicio
   if (usuarioLogueado.rol !== "admin") {
     return <Navigate to="/" replace />;
   }
 
-  // Si es admin, renderiza las rutas hijas
+  // Si es admin, renderiza las rutas para el administrador
   return <Outlet />;
 };
 

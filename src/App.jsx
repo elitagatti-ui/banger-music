@@ -19,7 +19,9 @@ function App() {
         <Route path="/detalle/:id" element={<Detalle />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route element={<ProtectorRutas />}>
+          <Route path="/admin" element={<Admin />} />
+        </Route>
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
