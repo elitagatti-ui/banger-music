@@ -7,6 +7,7 @@ import Error from "./pages/PaginaError";
 import Login from "./pages/Login"
 import Registro from "./pages/Registro";
 import Admin from "./pages/Admin";
+import ProtectorRutas from "./components/routes/ProtectorRutas";
 
 function App() {
   return (
