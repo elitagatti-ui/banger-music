@@ -20,8 +20,8 @@ const Login = () => {
     const envAdminEmail = import.meta.env.VITE_ADMIN_EMAIL;
     const envAdminPassword = import.meta.env.VITE_ADMIN_PASSWORD;
 
-
-    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const usuariosGuardados =
+      JSON.parse(localStorage.getItem("usuarios")) || [];
 
     let usuarioEncontrado = null;
 
@@ -31,10 +31,13 @@ const Login = () => {
     } else {
       //Validar contra usuarios guardados en localStorage
       const matchLocal = usuariosGuardados.find(
-        (u) => u.email === data.email && u.password === data.password
+        (u) => u.email === data.email && u.password === data.password,
       );
       if (matchLocal) {
-        usuarioEncontrado = { email: matchLocal.email, rol: matchLocal.rol || "user" };
+        usuarioEncontrado = {
+          email: matchLocal.email,
+          rol: matchLocal.rol || "user",
+        };
       }
     }
 
@@ -129,15 +132,7 @@ const Login = () => {
                 placeholder="••••••••"
                 className={`form-control ${errors.password ? "is-invalid" : ""}`}
                 {...register("password", {
-                  required: "La contraseña es obligatoria",
-                  minLength: {
-                    value: 6,
-                    message: "Debe tener al menos 6 caracteres",
-                  },
-                  pattern: {
-                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-                    message: "Debe incluir mayúscula, minúscula y número",
-                  },
+                  required: "Ingrese su contraseña",
                 })}
               />
             </div>
