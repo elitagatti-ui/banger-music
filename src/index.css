@@ -12,7 +12,7 @@ body {
 
 
 /* 
-   paleta de colore
+   paleta de colores
  */
 
 :root {
@@ -1964,4 +1964,9 @@ body {
     .buscador-catalogo input {
         font-size: 13px;
     }
+}
+.user-display-name {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
 }
