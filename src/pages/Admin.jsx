@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import cancionesIniciales from "../data/canciones.js";
+import "./Admin.css";
 
 const Admin = () => {
   const [tabActiva, setTabActiva] = useState("canciones");
@@ -31,8 +32,7 @@ const Admin = () => {
 
   // Cargar Usuarios desde localStorage
   useEffect(() => {
-    const usuariosGuardados =
-      JSON.parse(localStorage.getItem("usuarios")) || [];
+    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
     setUsuarios(usuariosGuardados);
   }, []);
 
@@ -58,13 +58,9 @@ const Admin = () => {
 
     if (idEnEdicion) {
       listaActualizada = canciones.map((c) =>
-        c.id === idEnEdicion ? { ...c, ...data, anio: Number(data.anio) } : c,
+        c.id === idEnEdicion ? { ...c, ...data, anio: Number(data.anio) } : c
       );
-      mostrarAlerta(
-        "¡Actualizado!",
-        "La canción fue modificada con éxito.",
-        "success",
-      );
+      mostrarAlerta("¡Actualizado!", "La canción fue modificada con éxito.", "success");
     } else {
       const nuevaCancion = {
         id: Date.now(),
@@ -72,11 +68,7 @@ const Admin = () => {
         anio: Number(data.anio),
       };
       listaActualizada = [...canciones, nuevaCancion];
-      mostrarAlerta(
-        "¡Creada!",
-        "La canción fue agregada al catálogo.",
-        "success",
-      );
+      mostrarAlerta("¡Creada!", "La canción fue agregada al catálogo.", "success");
     }
 
     setCanciones(listaActualizada);
@@ -84,7 +76,7 @@ const Admin = () => {
     limpiarFormulario();
   };
 
-  // Cargar datos en el formulario para editar y hacer scroll hacia arriba
+  // Cargar datos en el formulario para editar y hacer scroll suave hacia arriba
   const handleEditarCancion = (cancion) => {
     setIdEnEdicion(cancion.id);
     setValue("nombre", cancion.nombre);
@@ -134,15 +126,11 @@ const Admin = () => {
   const handleCambiarRol = (email, rolActual) => {
     const nuevoRol = rolActual === "admin" ? "user" : "admin";
     const listaActualizada = usuarios.map((u) =>
-      u.email === email ? { ...u, rol: nuevoRol } : u,
+      u.email === email ? { ...u, rol: nuevoRol } : u
     );
     setUsuarios(listaActualizada);
     localStorage.setItem("usuarios", JSON.stringify(listaActualizada));
-    mostrarAlerta(
-      "Rol actualizado",
-      `El usuario ahora es ${nuevoRol}.`,
-      "info",
-    );
+    mostrarAlerta("Rol actualizado", `El usuario ahora es ${nuevoRol}.`, "info");
   };
 
   // Eliminar Usuario con Confirmación
@@ -170,13 +158,13 @@ const Admin = () => {
   };
 
   return (
-    <div className="container py-4">
+    <div className="container py-4 admin-container">
       {/* HEADER */}
       <div className="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
-        <h2 className="text-white m-0 fw-bold">Gestión de Catálogo</h2>
+        <h2 className="m-0 admin-header-title">Gestión de Catálogo</h2>
         {tabActiva === "canciones" && (
           <button
-            className="btn btn-warning fw-semibold align-self-start align-self-sm-auto"
+            className="btn btn-banger-primary align-self-start align-self-sm-auto"
             onClick={() => {
               if (mostrarFormulario) {
                 limpiarFormulario();
@@ -185,9 +173,7 @@ const Admin = () => {
               }
             }}
           >
-            <i
-              className={`bi ${mostrarFormulario ? "bi-x-lg" : "bi-plus-lg"} me-2`}
-            ></i>
+            <i className={`bi ${mostrarFormulario ? "bi-x-lg" : "bi-plus-lg"} me-2`}></i>
             {mostrarFormulario ? "Cancelar" : "Agregar Canción"}
           </button>
         )}
@@ -195,136 +181,82 @@ const Admin = () => {
 
       {/* FORMULARIO DE ALTA / EDICIÓN */}
       {tabActiva === "canciones" && mostrarFormulario && (
-        <div className="card bg-dark text-white border-secondary p-3 p-md-4 mb-4 shadow-sm">
-          <h4 className="mb-3 fw-bold text-warning">
+        <div className="card p-3 p-md-4 mb-4 admin-card-form">
+          <h4 className="mb-3 fw-bold text-white">
             {idEnEdicion ? "Editar Canción" : "Nueva Canción"}
           </h4>
           <form onSubmit={handleSubmit(onGuardarCancion)}>
             <div className="row g-3">
               <div className="col-12 col-md-6">
-                <label className="form-label text-secondary small fw-bold">
-                  Nombre
-                </label>
+                <label className="form-label small fw-bold text-uppercase">Nombre</label>
                 <input
                   type="text"
-                  className={`form-control bg-dark text-white border-secondary ${errors.nombre ? "is-invalid" : ""}`}
-                  {...register("nombre", {
-                    required: "El nombre es obligatorio",
-                  })}
+                  className={`form-control ${errors.nombre ? "is-invalid" : ""}`}
+                  {...register("nombre", { required: "El nombre es obligatorio" })}
                 />
-                {errors.nombre && (
-                  <span className="invalid-feedback">
-                    {errors.nombre.message}
-                  </span>
-                )}
+                {errors.nombre && <span className="invalid-feedback">{errors.nombre.message}</span>}
               </div>
 
               <div className="col-12 col-md-6">
-                <label className="form-label text-secondary small fw-bold">
-                  Artista
-                </label>
+                <label className="form-label small fw-bold text-uppercase">Artista</label>
                 <input
                   type="text"
-                  className={`form-control bg-dark text-white border-secondary ${errors.artista ? "is-invalid" : ""}`}
-                  {...register("artista", {
-                    required: "El artista es obligatorio",
-                  })}
+                  className={`form-control ${errors.artista ? "is-invalid" : ""}`}
+                  {...register("artista", { required: "El artista es obligatorio" })}
                 />
-                {errors.artista && (
-                  <span className="invalid-feedback">
-                    {errors.artista.message}
-                  </span>
-                )}
+                {errors.artista && <span className="invalid-feedback">{errors.artista.message}</span>}
               </div>
 
               <div className="col-12 col-sm-6 col-md-4">
-                <label className="form-label text-secondary small fw-bold">
-                  Álbum
-                </label>
+                <label className="form-label small fw-bold text-uppercase">Álbum</label>
                 <input
                   type="text"
-                  className={`form-control bg-dark text-white border-secondary ${errors.album ? "is-invalid" : ""}`}
-                  {...register("album", {
-                    required: "El álbum es obligatorio",
-                  })}
+                  className={`form-control ${errors.album ? "is-invalid" : ""}`}
+                  {...register("album", { required: "El álbum es obligatorio" })}
                 />
-                {errors.album && (
-                  <span className="invalid-feedback">
-                    {errors.album.message}
-                  </span>
-                )}
+                {errors.album && <span className="invalid-feedback">{errors.album.message}</span>}
               </div>
 
               <div className="col-6 col-sm-3 col-md-4">
-                <label className="form-label text-secondary small fw-bold">
-                  Año
-                </label>
+                <label className="form-label small fw-bold text-uppercase">Año</label>
                 <input
                   type="number"
-                  className={`form-control bg-dark text-white border-secondary ${errors.anio ? "is-invalid" : ""}`}
+                  className={`form-control ${errors.anio ? "is-invalid" : ""}`}
                   {...register("anio", { required: "El año es obligatorio" })}
                 />
-                {errors.anio && (
-                  <span className="invalid-feedback">
-                    {errors.anio.message}
-                  </span>
-                )}
+                {errors.anio && <span className="invalid-feedback">{errors.anio.message}</span>}
               </div>
 
               <div className="col-6 col-sm-3 col-md-4">
-                <label className="form-label text-secondary small fw-bold">
-                  Género
-                </label>
+                <label className="form-label small fw-bold text-uppercase">Género</label>
                 <input
                   type="text"
-                  className={`form-control bg-dark text-white border-secondary ${errors.genero ? "is-invalid" : ""}`}
-                  {...register("genero", {
-                    required: "El género es obligatorio",
-                  })}
+                  className={`form-control ${errors.genero ? "is-invalid" : ""}`}
+                  {...register("genero", { required: "El género es obligatorio" })}
                 />
-                {errors.genero && (
-                  <span className="invalid-feedback">
-                    {errors.genero.message}
-                  </span>
-                )}
+                {errors.genero && <span className="invalid-feedback">{errors.genero.message}</span>}
               </div>
 
               <div className="col-12 col-md-6">
-                <label className="form-label text-secondary small fw-bold">
-                  URL Imagen de Carátula
-                </label>
+                <label className="form-label small fw-bold text-uppercase">URL Imagen de Carátula</label>
                 <input
                   type="url"
-                  className={`form-control bg-dark text-white border-secondary ${errors.imagen ? "is-invalid" : ""}`}
+                  className={`form-control ${errors.imagen ? "is-invalid" : ""}`}
                   placeholder="https://..."
-                  {...register("imagen", {
-                    required: "La URL de imagen es obligatoria",
-                  })}
+                  {...register("imagen", { required: "La URL de imagen es obligatoria" })}
                 />
-                {errors.imagen && (
-                  <span className="invalid-feedback">
-                    {errors.imagen.message}
-                  </span>
-                )}
+                {errors.imagen && <span className="invalid-feedback">{errors.imagen.message}</span>}
               </div>
 
               <div className="col-12 col-md-6">
-                <label className="form-label text-secondary small fw-bold">
-                  URL Archivo de Audio
-                </label>
+                <label className="form-label small fw-bold text-uppercase">URL Archivo de Audio</label>
                 <input
                   type="url"
-                  className={`form-control bg-dark text-white border-secondary ${errors.archivo ? "is-invalid" : ""}`}
+                  className={`form-control ${errors.archivo ? "is-invalid" : ""}`}
                   placeholder="https://..."
-                  {...register("archivo", {
-                    required: "La URL del audio es obligatoria",
-                  })}
+                  {...register("archivo", { required: "La URL del audio es obligatoria" })}
                 />
-                {errors.archivo && (
-                  <span className="invalid-feedback">
-                    {errors.archivo.message}
-                  </span>
-                )}
+                {errors.archivo && <span className="invalid-feedback">{errors.archivo.message}</span>}
               </div>
             </div>
 
@@ -336,7 +268,7 @@ const Admin = () => {
               >
                 Cancelar
               </button>
-              <button type="submit" className="btn btn-warning fw-semibold">
+              <button type="submit" className="btn btn-banger-primary">
                 {idEnEdicion ? "Guardar Cambios" : "Guardar Canción"}
               </button>
             </div>
@@ -345,19 +277,15 @@ const Admin = () => {
       )}
 
       {/* TABS DE NAVEGACIÓN INTERNA */}
-      <div className="d-flex gap-2 border-bottom border-secondary mb-4 pb-2">
+      <div className="d-flex gap-2 mb-4 pb-2 admin-tabs-nav">
         <button
-          className={`btn ${
-            tabActiva === "canciones" ? "btn-warning" : "btn-outline-secondary"
-          }`}
+          className={`admin-tab-btn ${tabActiva === "canciones" ? "active" : ""}`}
           onClick={() => setTabActiva("canciones")}
         >
           Canciones ({canciones.length})
         </button>
         <button
-          className={`btn ${
-            tabActiva === "usuarios" ? "btn-warning" : "btn-outline-secondary"
-          }`}
+          className={`admin-tab-btn ${tabActiva === "usuarios" ? "active" : ""}`}
           onClick={() => setTabActiva("usuarios")}
         >
           Usuarios ({usuarios.length})
@@ -366,8 +294,8 @@ const Admin = () => {
 
       {/* TAB CANCIONES */}
       {tabActiva === "canciones" && (
-        <div className="table-responsive border border-secondary rounded-3 p-2 bg-dark">
-          <table className="table table-dark align-middle m-0">
+        <div className="table-responsive admin-table-wrapper">
+          <table className="table admin-table align-middle">
             <thead>
               <tr>
                 <th>PORTADA</th>
@@ -386,45 +314,30 @@ const Admin = () => {
                       <img
                         src={cancion.imagen}
                         alt={cancion.nombre}
-                        style={{
-                          width: "42px",
-                          height: "42px",
-                          objectFit: "cover",
-                        }}
-                        className="rounded"
+                        className="admin-cover-img"
                       />
                     </td>
                     <td>
                       <div className="fw-bold text-white">{cancion.nombre}</div>
-                      <small className="text-secondary d-sm-none">
-                        {cancion.artista}
-                      </small>
+                      <small className="text-muted d-sm-none">{cancion.artista}</small>
                     </td>
-                    <td className="d-none d-sm-table-cell text-secondary">
-                      {cancion.artista}
-                    </td>
-                    <td className="d-none d-md-table-cell text-secondary">
-                      {cancion.album}
-                    </td>
+                    <td className="d-none d-sm-table-cell text-muted">{cancion.artista}</td>
+                    <td className="d-none d-md-table-cell text-muted">{cancion.album}</td>
                     <td className="d-none d-lg-table-cell">
-                      <span className="badge bg-secondary">
-                        {cancion.genero}
-                      </span>
+                      <span className="badge-banger">{cancion.genero}</span>
                     </td>
                     <td className="text-end">
                       <div className="d-flex gap-1 justify-content-end">
                         <button
-                          className="btn btn-sm btn-outline-warning"
+                          className="btn btn-action-icon btn-action-edit"
                           onClick={() => handleEditarCancion(cancion)}
                           title="Editar canción"
                         >
                           <i className="bi bi-pencil"></i>
                         </button>
                         <button
-                          className="btn btn-sm btn-outline-danger"
-                          onClick={() =>
-                            handleEliminarCancion(cancion.id, cancion.nombre)
-                          }
+                          className="btn btn-action-icon btn-action-delete"
+                          onClick={() => handleEliminarCancion(cancion.id, cancion.nombre)}
                           title="Eliminar canción"
                         >
                           <i className="bi bi-trash3"></i>
@@ -447,8 +360,8 @@ const Admin = () => {
 
       {/* TAB USUARIOS */}
       {tabActiva === "usuarios" && (
-        <div className="table-responsive border border-secondary rounded-3 p-2 bg-dark">
-          <table className="table table-dark align-middle m-0">
+        <div className="table-responsive admin-table-wrapper">
+          <table className="table admin-table align-middle">
             <thead>
               <tr>
                 <th>NOMBRE</th>
@@ -461,17 +374,11 @@ const Admin = () => {
               {usuarios.length > 0 ? (
                 usuarios.map((usr, index) => (
                   <tr key={usr.email || index}>
-                    <td className="fw-bold text-white">
-                      {usr.nombre || "Sin Nombre"}
-                    </td>
-                    <td className="text-secondary">{usr.email}</td>
+                    <td className="fw-bold text-white">{usr.nombre || "Sin Nombre"}</td>
+                    <td className="text-muted">{usr.email}</td>
                     <td>
                       <button
-                        className={`btn btn-sm ${
-                          usr.rol === "admin"
-                            ? "btn-warning text-dark fw-bold"
-                            : "btn-outline-secondary"
-                        }`}
+                        className={usr.rol === "admin" ? "badge-role-admin" : "badge-role-user"}
                         onClick={() => handleCambiarRol(usr.email, usr.rol)}
                         title="Click para alternar rol"
                       >
@@ -480,7 +387,7 @@ const Admin = () => {
                     </td>
                     <td className="text-end">
                       <button
-                        className="btn btn-sm btn-outline-danger"
+                        className="btn btn-action-icon btn-action-delete"
                         onClick={() => handleEliminarUsuario(usr.email)}
                         title="Eliminar usuario"
                       >
