@@ -1,10 +1,14 @@
 import Cancion from "../components/CancionCardj";
-import canciones from "../data/canciones";
+import cancionesIniciales from "../data/canciones";
 import { useState } from "react";
 import Reproductor from "../components/Reproductor";
 
 function Catalogo() {
   const [cancionActual, setCancionActual] = useState(null);
+  const [canciones, setCanciones] = useState(() => {
+    const guardadas = localStorage.getItem("canciones");
+    return guardadas ? JSON.parse(guardadas) : cancionesIniciales;
+  });
   const [busqueda, setBusqueda] = useState("");
 
   const cancionesFiltradas = canciones.filter(
@@ -37,8 +41,6 @@ function Catalogo() {
 
       <section className="catalogo-header">
         <p>DESCUBRÍ MÚSICA</p>
-
-      
 
         <span>Cuando las Palabras fallan, La Música habla.</span>
       </section>
