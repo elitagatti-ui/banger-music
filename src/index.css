@@ -862,11 +862,9 @@ body {
     left: 0;
 
     width: 100%;
-
     height: 90px;
 
     background: #121824;
-
     border-top: 1px solid #2A3448;
 
     color: #FFFFFF;
@@ -878,12 +876,18 @@ body {
     padding: 15px 30px;
 
     z-index: 9999;
+
+    box-sizing: border-box;
 }
+
+/* INFORMACIÓN DE LA CANCIÓN */
 
 .reproductor-info {
     display: flex;
     align-items: center;
     gap: 15px;
+
+    min-width: 0;
 }
 
 .reproductor-info img {
@@ -891,18 +895,33 @@ body {
     height: 60px;
 
     object-fit: cover;
-
     border-radius: 8px;
 }
 
 .reproductor-info h4 {
     margin: 0;
     color: #FFFFFF;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .reproductor-info p {
     margin: 5px 0 0;
     color: #94A3B8;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* BOTONES */
+
+.reproductor-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .reproductor-buttons {
@@ -931,7 +950,7 @@ body {
     color: #FFFFFF;
 }
 
-
+/* VOLUMEN */
 
 .reproductor-volume {
     display: flex;
@@ -944,7 +963,70 @@ body {
 }
 
 
+/* =========================
+   CELULARES
+   ========================= */
 
+@media (max-width: 600px) {
+
+    .reproductor {
+        height: 75px;
+        padding: 10px 15px;
+        gap: 10px;
+    }
+
+    .reproductor-info {
+        gap: 10px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .reproductor-info img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .reproductor-info h4 {
+        font-size: 14px;
+    }
+
+    .reproductor-info p {
+        font-size: 12px;
+    }
+
+    .reproductor-buttons {
+        gap: 8px;
+    }
+
+    .reproductor-buttons button {
+        font-size: 17px;
+    }
+
+    .reproductor-buttons .play-main {
+        width: 40px;
+        height: 40px;
+    }
+
+    .reproductor-volume {
+        display: none;
+    }
+}
+
+
+/* =========================
+   IPAD / TABLET
+   ========================= */
+
+@media (min-width: 601px) and (max-width: 1100px) {
+
+    .reproductor {
+        padding: 15px 25px;
+    }
+
+    .reproductor-volume input {
+        width: 100px;
+    }
+}
 
 /* 
    favorito
