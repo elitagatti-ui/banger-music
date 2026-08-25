@@ -1,5 +1,7 @@
 import { useParams, Link } from "react-router-dom";
-import canciones from "../data/canciones";
+import cancionesIniciales from "../data/canciones"
+const canciones = JSON.parse(localStorage.getItem("canciones")) || cancionesIniciales;
+
 
 function Detalle() {
   const { id } = useParams();
