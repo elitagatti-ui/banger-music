@@ -17,12 +17,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Catalogo />} />
         <Route path="/detalle/:id" element={<Detalle />} />
+         <Route path="/playlists" element={<Playlists />} />
        
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
         <Route element={<ProtectorRutas />}>
           <Route path="/admin" element={<Admin />} />
-           <Route path="/playlists" element={<Playlists />} />
+          
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>
