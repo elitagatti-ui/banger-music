@@ -1,10 +1,40 @@
-
+import Navbar from "./components/Navbar";
+import Cancion from "./components/CancionCardj";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Catalogo from "./pages/Catalogo";
+import Detalle from "./pages/Detalle";
+import Error from "./pages/PaginaError";
+import Login from "./pages/Login";
+import Registro from "./pages/Registro";
+import Admin from "./pages/Admin";
+import ProtectorRutas from "./components/routes/ProtectorRutas";
+import Playlists from "./pages/Playlist";
+import Footer from "./components/Footer";
+import Ayuda from "./pages/Ayuda";
 
 function App() {
-
   return (
-           <h1>Catalogo</h1>
-  )
+    <BrowserRouter>
+      <div className="d-flex flex-column min-vh-100">
+        <Navbar />
+        <main className="flex-grow-1">
+          <Routes>
+            <Route path="/" element={<Catalogo />} />
+            <Route path="/detalle/:id" element={<Detalle />} />
+            <Route path="/playlists" element={<Playlists />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/registro" element={<Registro />} />
+            <Route path="/ayuda" element={<Ayuda />} />
+            <Route element={<ProtectorRutas />}>
+              <Route path="/admin" element={<Admin />} />
+            </Route>
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
