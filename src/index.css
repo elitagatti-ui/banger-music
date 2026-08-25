@@ -2090,3 +2090,27 @@ body {
 .btn-eliminar:hover {
   background: #e85b00;
 }
+
+.select-playlist {
+  background-color: #121824;
+  color: #ffffff;
+  border: 1px solid #2A3448;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  margin-top: 8px;
+  width: 100%;
+  max-width: 250px;
+}
+
+.select-playlist:focus {
+  border-color: #FF6500;
+  box-shadow: 0 0 0 2px rgba(255, 101, 0, 0.15);
+}
+
+.select-playlist:hover {
+  border-color: #FF6500;
+}
+

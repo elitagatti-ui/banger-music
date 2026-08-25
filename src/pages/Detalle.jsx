@@ -98,10 +98,11 @@ function Detalle() {
 
           <div className="detalle-actions">
             <select
+            className="select-playlist"
               value={playlistSeleccionada}
               onChange={(e) => setPlaylistSeleccionada(e.target.value)}
             >
-              <option value="">Elegir playlist</option>
+              <option value="">Elegir Playlist</option>
 
               {playlists.map((playlist) => (
                 <option key={playlist.id} value={playlist.id}>
