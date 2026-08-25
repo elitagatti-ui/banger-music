@@ -2,10 +2,10 @@ import Cancion from "../components/CancionCardj";
 import cancionesIniciales from "../data/canciones";
 import { useState } from "react";
 import Reproductor from "../components/Reproductor";
-
+import { Hero } from "../components/Hero";
 function Catalogo() {
   const [cancionActual, setCancionActual] = useState(null);
-  const [canciones, setCanciones] = useState(() => {
+  const [canciones] = useState(() => {
     const guardadas = localStorage.getItem("canciones");
     return guardadas ? JSON.parse(guardadas) : cancionesIniciales;
   });
@@ -39,9 +39,14 @@ function Catalogo() {
         )}
       </div>
 
+      {/* Se le pasa el array de canciones y la función para cambiar la canción actual */}
+      <Hero
+        canciones={canciones}
+        onPlay={(cancion) => setCancionActual(cancion)}
+      />
+
       <section className="catalogo-header">
         <p>DESCUBRÍ MÚSICA</p>
-
         <span>Cuando las Palabras fallan, La Música habla.</span>
       </section>
 
@@ -70,9 +75,7 @@ function Catalogo() {
       ) : (
         <div className="sin-resultados">
           <i className="bi bi-music-note-list"></i>
-
           <h3>No encontramos canciones</h3>
-
           <p>Probá buscando otro nombre de canción o artista.</p>
         </div>
       )}
