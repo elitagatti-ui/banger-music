@@ -12,7 +12,7 @@
 }
 
 .logo-container svg path[stroke="var(--muted-foreground)"] {
-  stroke: var(--text-muted, #94A3B8);
+  stroke: var(--text-muted, #94a3b8);
 }
 
 .input-icon-wrapper {
@@ -60,4 +60,16 @@
 
 .text-banger-link:hover {
   text-decoration: underline;
+}
+.logo-container {
+  cursor: pointer;
+  user-select: none;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px rgba(255, 101, 0, 0.5));
 }

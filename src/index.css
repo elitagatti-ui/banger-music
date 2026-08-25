@@ -5,9 +5,11 @@
 }
 
 body {
-  background-color: #0a0e17;
+  background: linear-gradient(180deg, #0A0E17 0%, #16131c 100%);
+  background-attachment: fixed; /* Mantiene el gradiente suave a lo largo de todo el scroll */
   color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
 
 /* 
@@ -671,42 +673,59 @@ main,
   background-color: var(--surface) !important;
   border-radius: 12px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.songs-grid .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(255, 101, 0, 0.12);
 }
 
 .songs-grid .card-img-top {
-  height: 250px;
-  object-fit: cover;
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  object-fit: cover !important;
+  object-position: center top !important;
+  display: block !important;
 }
 
 /* Contenido de la card */
 .songs-grid .card-body {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 20px;
+  position: relative;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
+  padding: 16px !important;
+  gap: 8px !important;
 }
 
 /* Título */
 .songs-grid .card-title {
   color: var(--text-primary);
-  margin-bottom: 8px;
-
-  /* Mantiene todos los títulos con la misma altura */
-  min-height: 48px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  min-height: unset;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Información */
 .songs-grid .card-text {
-  margin-bottom: 6px;
+  margin-bottom: 2px;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* 
    contenedor de detalle
  */
 
-.songs-grid .card-body {
-  position: relative;
-}
 
 /* Hace que los botones queden abajo */
 .songs-grid .btn-reproducir,
@@ -792,13 +811,12 @@ main,
 
 .card-buttons {
   margin-top: auto;
-
   display: flex;
   flex-direction: column;
-
   align-items: center;
-
   width: 100%;
+  gap: 8px;
+  padding-top: 12px;
 }
 
 /* 

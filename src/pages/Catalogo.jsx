@@ -52,7 +52,7 @@ function Catalogo() {
       </div>
 
       {cancionesFiltradas.length > 0 ? (
-        <div className="row g-4">
+        <div className="row g-4 songs-grid">
           {cancionesFiltradas.map((cancion) => (
             <div className="col-6 col-md-4 col-lg-3" key={cancion.id}>
               <Cancion
