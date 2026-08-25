@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import canciones from "../data/canciones";
+import cancionesIniciales from "../data/canciones";
 import Swal from "sweetalert2";
 import { useAppContext } from "../context/AppContext";
+const canciones = JSON.parse(localStorage.getItem("canciones")) || cancionesIniciales;
 
 function Playlists() {
   const [nombre, setNombre] = useState("");
