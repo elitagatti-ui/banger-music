@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import canciones from "../data/canciones";
 import Swal from "sweetalert2";
+import { useAppContext } from "../context/AppContext";
 
 function Playlists() {
   const [nombre, setNombre] = useState("");
@@ -14,7 +15,21 @@ function Playlists() {
     setPlaylists(playlistsGuardadas);
   }, []);
 
+  const { usuarioLogueado } = useAppContext();
   const crearPlaylist = () => {
+      if (!usuarioLogueado) {
+    Swal.fire({
+      title: "Iniciá sesión",
+      text: "Tenés que iniciar sesión para crear una playlist",
+      icon: "warning",
+      background: "#121824",
+      color: "#FFFFFF",
+      confirmButtonColor: "#FF6500",
+      confirmButtonText: "Entendido",
+      iconColor: "#FF6500",
+    });
+    return;
+  }
     if (!nombre.trim()) {
       Swal.fire({
         title: "Error",
