@@ -1754,7 +1754,58 @@ main,
     font-size: 15px;
   }
 }
+/* Encabezado del catálogo */
+.catalogo-section-header {
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
 
+/* Kicker / Tag superior en naranja */
+.catalogo-badge {
+  display: block;
+  color: var(--primary, #FF6500);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+/* Título principal con peso e impacto */
+.catalogo-main-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+/* Cita/Frase secundaria estilizada */
+.catalogo-quote {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Adaptabilidad a celulares */
+@media (max-width: 576px) {
+  .catalogo-section-header {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .catalogo-main-title {
+    font-size: 1.75rem;
+  }
+
+  .catalogo-quote {
+    font-size: 0.85rem;
+  }
+}
 /* 
    buscador
  */

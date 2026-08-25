@@ -45,16 +45,15 @@ function Catalogo() {
         onPlay={(cancion) => setCancionActual(cancion)}
       />
 
-      <section className="catalogo-header">
-        <p>DESCUBRÍ MÚSICA</p>
-        <span>Cuando las Palabras fallan, La Música habla.</span>
-      </section>
-
-      <div className="catalogo-title">
-        <h2>
+      <header className="catalogo-section-header">
+        <span className="catalogo-badge">DESCUBRÍ MÚSICA</span>
+        <h2 className="catalogo-main-title">
           {busqueda ? `Resultados para "${busqueda}"` : "Todas las canciones"}
         </h2>
-      </div>
+        <p className="catalogo-quote">
+          "Cuando las palabras fallan, la música habla."
+        </p>
+      </header>
 
       {cancionesFiltradas.length > 0 ? (
         <div className="row g-4 songs-grid">
