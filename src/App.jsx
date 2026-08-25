@@ -10,6 +10,7 @@ import Admin from "./pages/Admin";
 import ProtectorRutas from "./components/routes/ProtectorRutas";
 import Playlists from "./pages/Playlist";
 import Footer from "./components/Footer";
+import Ayuda from "./pages/Ayuda";
 
 function App() {
   return (
@@ -21,10 +22,9 @@ function App() {
             <Route path="/" element={<Catalogo />} />
             <Route path="/detalle/:id" element={<Detalle />} />
             <Route path="/playlists" element={<Playlists />} />
-
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
-            {/* <Route path="/ayuda" element={<Ayuda />} /> */}
+            <Route path="/ayuda" element={<Ayuda />} />
             <Route element={<ProtectorRutas />}>
               <Route path="/admin" element={<Admin />} />
             </Route>
@@ -36,4 +36,5 @@ function App() {
     </BrowserRouter>
   );
 }
+
 export default App;
