@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import canciones from "../data/canciones";
+import Swal from "sweetalert2";
 
 function Detalle() {
   const { id } = useParams();
@@ -42,7 +43,16 @@ function Detalle() {
 
   setPlaylists(playlistsActualizadas);
 
-  alert("Canción agregada a la playlist");
+        Swal.fire({
+          title: "¡Cancion Agregada!",
+          text: "Cancion en Playlist",
+          icon: "success",
+          background: "#121824",
+          color: "#FFFFFF",
+          confirmButtonColor: "#FF6500",
+          confirmButtonText: "Entendido",
+          iconColor: "#FF6500",
+        })
 };
 
   useEffect(() => {

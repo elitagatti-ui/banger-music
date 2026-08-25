@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import canciones from "../data/canciones";
 
+
+
 function Playlists() {
 
   const [nombre, setNombre] = useState("");
@@ -44,7 +46,30 @@ function Playlists() {
   setNombre("");
 
 };
+const eliminarCancion = (playlistId, cancionId) => {
+  const playlistsActuales =
+    JSON.parse(localStorage.getItem("playlists")) || [];
 
+  const playlistsActualizadas = playlistsActuales.map((playlist) => {
+    if (playlist.id === playlistId) {
+      return {
+        ...playlist,
+        canciones: playlist.canciones.filter(
+          (id) => id !== cancionId
+        )
+      };
+    }
+
+    return playlist;
+  });
+
+  localStorage.setItem(
+    "playlists",
+    JSON.stringify(playlistsActualizadas)
+  );
+
+  setPlaylists(playlistsActualizadas);
+};
 
   return (
     <div className="container py-5">
@@ -118,7 +143,12 @@ function Playlists() {
         <p>
           {cancion.artista}
         </p>
-
+<button
+  className="btn-eliminar"
+  onClick={() => eliminarCancion(playlist.id, cancion.id)}
+>
+  Eliminar canción
+</button>
       </div>
 
     </div>
