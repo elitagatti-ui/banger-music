@@ -29,15 +29,88 @@ const preguntasFrecuentes = [
   },
 ];
 
+// Escapa caracteres críticos para prevenir Inyección HTML / XSS en Render
+const sanitizeString = (str) => {
+  return str
+    .trim()
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#x27;");
+};
+
 function Ayuda() {
   const [abierta, setAbierta] = useState(null);
+  const [formData, setFormData] = useState({
+    nombre: "",
+    email: "",
+    mensaje: "",
+  });
+  const [errors, setErrors] = useState({});
 
   const togglePregunta = (id) => {
     setAbierta(abierta === id ? null : id);
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
+  };
+
+  const validarFormulario = () => {
+    const nuevosErrores = {};
+
+    // 1. Nombre: Solo letras, espacios y acentos (2 a 50 chars). No acepta símbolos ni código.
+    const nombreClean = formData.nombre.trim();
+    const regexNombre = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{2,50}$/;
+    if (!nombreClean) {
+      nuevosErrores.nombre = "El nombre es obligatorio.";
+    } else if (!regexNombre.test(nombreClean)) {
+      nuevosErrores.nombre = "Solo se permiten letras y espacios (2 a 50 caracteres).";
+    }
+
+    // 2. Email: Formato estricto de e-mail (max 100 chars)
+    const emailClean = formData.email.trim();
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailClean) {
+      nuevosErrores.email = "El email es obligatorio.";
+    } else if (emailClean.length > 100 || !regexEmail.test(emailClean)) {
+      nuevosErrores.email = "Ingresá un correo electrónico válido.";
+    }
+
+    // 3. Mensaje: Entre 10 y 500 chars. Rechaza etiquetas HTML (<script>, <img>, etc)
+    const mensajeClean = formData.mensaje.trim();
+    const regexSinHTML = /<[^>]*>/g;
+    if (!mensajeClean) {
+      nuevosErrores.mensaje = "El mensaje no puede estar vacío.";
+    } else if (mensajeClean.length < 10 || mensajeClean.length > 500) {
+      nuevosErrores.mensaje = "El mensaje debe tener entre 10 y 500 caracteres.";
+    } else if (regexSinHTML.test(mensajeClean)) {
+      nuevosErrores.mensaje = "No se permiten etiquetas o código HTML/JS.";
+    }
+
+    setErrors(nuevosErrores);
+    return Object.keys(nuevosErrores).length === 0;
+  };
+
   const handleSoporte = (e) => {
     e.preventDefault();
+
+    if (!validarFormulario()) return;
+
+    // Sanitización final antes de enviar
+    const datosSeguros = {
+      nombre: sanitizeString(formData.nombre),
+      email: sanitizeString(formData.email),
+      mensaje: sanitizeString(formData.mensaje),
+    };
+
+    console.log("Payload limpio y seguro:", datosSeguros);
+
     Swal.fire({
       title: "¡Mensaje enviado!",
       text: "Nos pondremos en contacto con vos a la brevedad.",
@@ -47,12 +120,13 @@ function Ayuda() {
       confirmButtonColor: "#FF6500",
       iconColor: "#FF6500",
     });
-    e.target.reset();
+
+    setFormData({ nombre: "", email: "", mensaje: "" });
+    setErrors({});
   };
 
   return (
     <div className="container py-5 ayuda-container">
-      {/* Encabezado */}
       <header className="text-center mb-5">
         <span className="ayuda-badge">SOPORTE BANGER</span>
         <h1 className="ayuda-title fw-bold">¿En qué podemos ayudarte?</h1>
@@ -61,7 +135,7 @@ function Ayuda() {
         </p>
       </header>
 
-      {/* Acordeón de FAQ */}
+      {/* Preguntas frecuentes */}
       <section className="row justify-content-center mb-5">
         <div className="col-12 col-lg-8">
           <div className="faq-list">
@@ -93,7 +167,7 @@ function Ayuda() {
         </div>
       </section>
 
-      {/* Formulario de contacto directo */}
+      {/* Formulario blindado */}
       <section className="row justify-content-center">
         <div className="col-12 col-lg-8">
           <div className="soporte-card p-4 rounded">
@@ -103,32 +177,59 @@ function Ayuda() {
             <p className="text-secondary small mb-4">
               Envianos tu consulta y el equipo técnico de BANGER te responderá pronto.
             </p>
-            <form onSubmit={handleSoporte}>
+            <form onSubmit={handleSoporte} noValidate>
               <div className="row g-3">
                 <div className="col-12 col-md-6">
                   <input
                     type="text"
-                    className="form-control soporte-input"
+                    name="nombre"
+                    value={formData.nombre}
+                    onChange={handleChange}
+                    className={`form-control soporte-input ${
+                      errors.nombre ? "is-invalid" : ""
+                    }`}
                     placeholder="Tu nombre"
-                    required
+                    maxLength={50}
                   />
+                  {errors.nombre && (
+                    <div className="invalid-feedback">{errors.nombre}</div>
+                  )}
                 </div>
+
                 <div className="col-12 col-md-6">
                   <input
                     type="email"
-                    className="form-control soporte-input"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={`form-control soporte-input ${
+                      errors.email ? "is-invalid" : ""
+                    }`}
                     placeholder="Tu email"
-                    required
+                    maxLength={100}
                   />
+                  {errors.email && (
+                    <div className="invalid-feedback">{errors.email}</div>
+                  )}
                 </div>
+
                 <div className="col-12">
                   <textarea
-                    className="form-control soporte-input"
+                    name="mensaje"
+                    value={formData.mensaje}
+                    onChange={handleChange}
+                    className={`form-control soporte-input ${
+                      errors.mensaje ? "is-invalid" : ""
+                    }`}
                     rows="3"
                     placeholder="Escribí tu mensaje..."
-                    required
+                    maxLength={500}
                   ></textarea>
+                  {errors.mensaje && (
+                    <div className="invalid-feedback">{errors.mensaje}</div>
+                  )}
                 </div>
+
                 <div className="col-12 text-end">
                   <button type="submit" className="btn btn-banger-primary">
                     Enviar mensaje
