@@ -1,8 +1,17 @@
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import canciones from "../data/canciones";
 
 function Detalle() {
   const { id } = useParams();
+  const [playlists, setPlaylists] = useState([]);
+  
+  useEffect(() => {
+  const playlistsGuardadas =
+    JSON.parse(localStorage.getItem("playlists")) || [];
+
+  setPlaylists(playlistsGuardadas);
+}, []);
 
   const cancion = canciones.find((cancion) => cancion.id === Number(id));
 
