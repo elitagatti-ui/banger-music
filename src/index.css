@@ -2076,3 +2076,17 @@ body {
   align-items: center;
   gap: 15px;
 }
+
+.btn-eliminar {
+  background: #FF6500;
+  color: white;
+  border: none;
+  padding: 7px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.btn-eliminar:hover {
+  background: #e85b00;
+}
