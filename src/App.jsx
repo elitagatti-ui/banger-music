@@ -9,6 +9,7 @@ import Registro from "./pages/Registro";
 import Admin from "./pages/Admin";
 import ProtectorRutas from "./components/routes/ProtectorRutas";
 import Playlists from "./pages/Playlist";
+import Ayuda from "./pages/Ayuda";
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +22,7 @@ function App() {
        
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
+        <Route path="/ayuda" element={<Ayuda />} />
         <Route element={<ProtectorRutas />}>
           <Route path="/admin" element={<Admin />} />
           
