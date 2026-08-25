@@ -105,6 +105,7 @@ function Playlists() {
   return (
     <div className="container py-5">
       <h1>Mis Playlists</h1>
+      {usuarioLogueado && (
       <div className="form-playlist">
         <input
           className="input-playlist"
@@ -118,6 +119,7 @@ function Playlists() {
           Crear Playlist
         </button>
       </div>
+      )}
       <div className="lista-playlists">
         {playlists.length === 0 ? (
           <p>Todavía no tenés ninguna playlist.</p>
