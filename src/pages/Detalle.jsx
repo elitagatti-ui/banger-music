@@ -7,6 +7,44 @@ function Detalle() {
   const [playlists, setPlaylists] = useState([]);
   const [playlistSeleccionada, setPlaylistSeleccionada] = useState("");
 
+  const agregarAPlaylist = () => {
+
+  if (!playlistSeleccionada) {
+    alert("Seleccioná una playlist");
+    return;
+  }
+
+  const playlistsGuardadas =
+    JSON.parse(localStorage.getItem("playlists")) || [];
+
+  const playlistsActualizadas = playlistsGuardadas.map((playlist) => {
+
+    if (playlist.id === Number(playlistSeleccionada)) {
+
+      return {
+        ...playlist,
+        canciones: [
+          ...playlist.canciones,
+          cancion.id
+        ]
+      };
+
+    }
+
+    return playlist;
+
+  });
+
+  localStorage.setItem(
+    "playlists",
+    JSON.stringify(playlistsActualizadas)
+  );
+
+  setPlaylists(playlistsActualizadas);
+
+  alert("Canción agregada a la playlist");
+};
+
   useEffect(() => {
     const playlistsGuardadas =
       JSON.parse(localStorage.getItem("playlists")) || [];
