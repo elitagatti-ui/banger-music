@@ -5,13 +5,14 @@ import canciones from "../data/canciones";
 function Detalle() {
   const { id } = useParams();
   const [playlists, setPlaylists] = useState([]);
-  
-  useEffect(() => {
-  const playlistsGuardadas =
-    JSON.parse(localStorage.getItem("playlists")) || [];
+  const [playlistSeleccionada, setPlaylistSeleccionada] = useState("");
 
-  setPlaylists(playlistsGuardadas);
-}, []);
+  useEffect(() => {
+    const playlistsGuardadas =
+      JSON.parse(localStorage.getItem("playlists")) || [];
+
+    setPlaylists(playlistsGuardadas);
+  }, []);
 
   const cancion = canciones.find((cancion) => cancion.id === Number(id));
 
@@ -48,6 +49,18 @@ function Detalle() {
           </p>
 
           <div className="detalle-actions">
+            <select
+              value={playlistSeleccionada}
+              onChange={(e) => setPlaylistSeleccionada(e.target.value)}
+            >
+              <option value="">Elegir playlist</option>
+
+              {playlists.map((playlist) => (
+                <option key={playlist.id} value={playlist.id}>
+                  {playlist.nombre}
+                </option>
+              ))}
+            </select>
             <button className="btn-detalle">
               <i className="bi bi-play-fill"></i>
               Agregar a Playlist
