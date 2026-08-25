@@ -3,6 +3,7 @@ import cancionesIniciales from "../data/canciones";
 import { useState } from "react";
 import Reproductor from "../components/Reproductor";
 import { Hero } from "../components/Hero";
+
 function Catalogo() {
   const [cancionActual, setCancionActual] = useState(null);
   const [canciones] = useState(() => {
@@ -14,7 +15,7 @@ function Catalogo() {
   const cancionesFiltradas = canciones.filter(
     (cancion) =>
       cancion.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-      cancion.artista.toLowerCase().includes(busqueda.toLowerCase()),
+      cancion.artista.toLowerCase().includes(busqueda.toLowerCase())
   );
 
   return (
@@ -39,11 +40,12 @@ function Catalogo() {
         )}
       </div>
 
-      {/* Se le pasa el array de canciones y la función para cambiar la canción actual */}
-      <Hero
-        canciones={canciones}
-        onPlay={(cancion) => setCancionActual(cancion)}
-      />
+      {!busqueda.trim() && (
+        <Hero
+          canciones={canciones}
+          onPlay={(cancion) => setCancionActual(cancion)}
+        />
+      )}
 
       <header className="catalogo-section-header">
         <span className="catalogo-badge">DESCUBRÍ MÚSICA</span>
