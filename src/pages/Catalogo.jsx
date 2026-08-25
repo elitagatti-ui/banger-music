@@ -2,10 +2,11 @@ import Cancion from "../components/CancionCardj";
 import cancionesIniciales from "../data/canciones";
 import { useState } from "react";
 import Reproductor from "../components/Reproductor";
+import { Hero } from "../components/Hero";
 
 function Catalogo() {
   const [cancionActual, setCancionActual] = useState(null);
-  const [canciones, setCanciones] = useState(() => {
+  const [canciones] = useState(() => {
     const guardadas = localStorage.getItem("canciones");
     return guardadas ? JSON.parse(guardadas) : cancionesIniciales;
   });
@@ -14,7 +15,7 @@ function Catalogo() {
   const cancionesFiltradas = canciones.filter(
     (cancion) =>
       cancion.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-      cancion.artista.toLowerCase().includes(busqueda.toLowerCase()),
+      cancion.artista.toLowerCase().includes(busqueda.toLowerCase())
   );
 
   return (
@@ -39,20 +40,25 @@ function Catalogo() {
         )}
       </div>
 
-      <section className="catalogo-header">
-        <p>DESCUBRÍ MÚSICA</p>
+      {!busqueda.trim() && (
+        <Hero
+          canciones={canciones}
+          onPlay={(cancion) => setCancionActual(cancion)}
+        />
+      )}
 
-        <span>Cuando las Palabras fallan, La Música habla.</span>
-      </section>
-
-      <div className="catalogo-title">
-        <h2>
+      <header className="catalogo-section-header">
+        <span className="catalogo-badge">DESCUBRÍ MÚSICA</span>
+        <h2 className="catalogo-main-title">
           {busqueda ? `Resultados para "${busqueda}"` : "Todas las canciones"}
         </h2>
-      </div>
+        <p className="catalogo-quote">
+          "Cuando las palabras fallan, la música habla."
+        </p>
+      </header>
 
       {cancionesFiltradas.length > 0 ? (
-        <div className="row g-4">
+        <div className="row g-4 songs-grid">
           {cancionesFiltradas.map((cancion) => (
             <div className="col-6 col-md-4 col-lg-3" key={cancion.id}>
               <Cancion
@@ -70,9 +76,7 @@ function Catalogo() {
       ) : (
         <div className="sin-resultados">
           <i className="bi bi-music-note-list"></i>
-
           <h3>No encontramos canciones</h3>
-
           <p>Probá buscando otro nombre de canción o artista.</p>
         </div>
       )}

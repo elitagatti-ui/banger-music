@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import canciones from "../data/canciones";
+import cancionesIniciales from "../data/canciones";
 import Swal from "sweetalert2";
 import { useAppContext } from "../context/AppContext";
+
+const canciones =
+  JSON.parse(localStorage.getItem("canciones")) || cancionesIniciales;
 
 function Detalle() {
   const { id } = useParams();
@@ -11,51 +14,40 @@ function Detalle() {
   const { usuarioLogueado } = useAppContext();
 
   const agregarAPlaylist = () => {
-
-  if (!playlistSeleccionada) {
-    alert("Seleccioná una playlist");
-    return;
-  }
-
-  const playlistsGuardadas =
-    JSON.parse(localStorage.getItem("playlists")) || [];
-
-  const playlistsActualizadas = playlistsGuardadas.map((playlist) => {
-
-    if (playlist.id === Number(playlistSeleccionada)) {
-
-      return {
-        ...playlist,
-        canciones: [
-          ...playlist.canciones,
-          cancion.id
-        ]
-      };
-
+    if (!playlistSeleccionada) {
+      alert("Seleccioná una playlist");
+      return;
     }
 
-    return playlist;
+    const playlistsGuardadas =
+      JSON.parse(localStorage.getItem("playlists")) || [];
 
-  });
+    const playlistsActualizadas = playlistsGuardadas.map((playlist) => {
+      if (playlist.id === Number(playlistSeleccionada)) {
+        return {
+          ...playlist,
+          canciones: [...playlist.canciones, cancion.id],
+        };
+      }
 
-  localStorage.setItem(
-    "playlists",
-    JSON.stringify(playlistsActualizadas)
-  );
+      return playlist;
+    });
 
-  setPlaylists(playlistsActualizadas);
+    localStorage.setItem("playlists", JSON.stringify(playlistsActualizadas));
 
-        Swal.fire({
-          title: "¡Cancion Agregada!",
-          text: "Cancion en Playlist",
-          icon: "success",
-          background: "#121824",
-          color: "#FFFFFF",
-          confirmButtonColor: "#FF6500",
-          confirmButtonText: "Entendido",
-          iconColor: "#FF6500",
-        })
-};
+    setPlaylists(playlistsActualizadas);
+
+    Swal.fire({
+      title: "¡Cancion Agregada!",
+      text: "Cancion en Playlist",
+      icon: "success",
+      background: "#121824",
+      color: "#FFFFFF",
+      confirmButtonColor: "#FF6500",
+      confirmButtonText: "Entendido",
+      iconColor: "#FF6500",
+    });
+  };
 
   useEffect(() => {
     const playlistsGuardadas =
@@ -97,30 +89,27 @@ function Detalle() {
           <p className="detalle-album">
             Álbum: <strong>{cancion.album}</strong>
           </p>
-            {usuarioLogueado && (
+          {usuarioLogueado && (
+            <div className="detalle-actions">
+              <select
+                className="select-playlist"
+                value={playlistSeleccionada}
+                onChange={(e) => setPlaylistSeleccionada(e.target.value)}
+              >
+                <option value="">Elegir Playlist</option>
 
-          <div className="detalle-actions">
-            <select
-            className="select-playlist"
-              value={playlistSeleccionada}
-              onChange={(e) => setPlaylistSeleccionada(e.target.value)}
-            >
-              <option value="">Elegir Playlist</option>
-
-              {playlists.map((playlist) => (
-                <option key={playlist.id} value={playlist.id}>
-                  {playlist.nombre}
-                </option>
-              ))}
-            </select>
-            <button className="btn-detalle"
-            onClick={agregarAPlaylist}>
-
-              <i className="bi bi-play-fill"></i>
-              Agregar a Playlist
-            </button>
-          </div>
-            )}
+                {playlists.map((playlist) => (
+                  <option key={playlist.id} value={playlist.id}>
+                    {playlist.nombre}
+                  </option>
+                ))}
+              </select>
+              <button className="btn-detalle" onClick={agregarAPlaylist}>
+                <i className="bi bi-play-fill"></i>
+                Agregar a Playlist
+              </button>
+            </div>
+          )}
 
           {/* DATOS */}
 
