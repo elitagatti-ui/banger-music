@@ -50,17 +50,22 @@ function Playlists() {
     <div className="container py-5">
 
       <h1>Mis Playlists</h1>
+<div className="form-playlist">
 
       <input
+      className="input-playlist"
         type="text"
         placeholder="Nombre de la playlist"
         value={nombre}
         onChange={(e) => setNombre(e.target.value)}
       />
 
-     <button onClick={crearPlaylist}>
+     <button 
+     className="btn-crear-playlist" 
+     onClick={crearPlaylist}>
   Crear Playlist
 </button>
+</div>
 <div className="lista-playlists">
 
         {playlists.length === 0 ? (
