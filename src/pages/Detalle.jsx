@@ -99,7 +99,9 @@ function Detalle() {
                 </option>
               ))}
             </select>
-            <button className="btn-detalle">
+            <button className="btn-detalle"
+            onClick={agregarAPlaylist}>
+
               <i className="bi bi-play-fill"></i>
               Agregar a Playlist
             </button>
