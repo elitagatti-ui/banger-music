@@ -43,9 +43,9 @@ function Playlists() {
         onChange={(e) => setNombre(e.target.value)}
       />
 
-      <button>
-        Crear Playlist
-      </button>
+     <button onClick={crearPlaylist}>
+  Crear Playlist
+</button>
 
     </div>
   );
