@@ -90,7 +90,37 @@ function Playlists() {
                 <p>
                   {cancionesPlaylist.length} canciones
                 </p>
+<div className="playlist-canciones">
 
+  {cancionesPlaylist.map((cancion) => (
+
+    <div
+      className="playlist-cancion"
+      key={cancion.id}
+    >
+
+      <img
+        src={cancion.imagen}
+        alt={cancion.nombre}
+      />
+
+      <div>
+
+        <h4>
+          {cancion.nombre}
+        </h4>
+
+        <p>
+          {cancion.artista}
+        </p>
+
+      </div>
+
+    </div>
+
+  ))}
+
+</div>
               </div>
             );
 
