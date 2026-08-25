@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import canciones from "../data/canciones";
 import Swal from "sweetalert2";
+import { useAppContext } from "../context/AppContext";
 
 function Detalle() {
   const { id } = useParams();
   const [playlists, setPlaylists] = useState([]);
   const [playlistSeleccionada, setPlaylistSeleccionada] = useState("");
+  const { usuarioLogueado } = useAppContext();
 
   const agregarAPlaylist = () => {
 
@@ -95,6 +97,7 @@ function Detalle() {
           <p className="detalle-album">
             Álbum: <strong>{cancion.album}</strong>
           </p>
+            {usuarioLogueado && (
 
           <div className="detalle-actions">
             <select
@@ -117,6 +120,7 @@ function Detalle() {
               Agregar a Playlist
             </button>
           </div>
+            )}
 
           {/* DATOS */}
 
