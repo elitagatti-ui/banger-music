@@ -1,0 +1,50 @@
+.app-footer {
+  background-color: #0a0e17;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+}
+
+.footer-brand {
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.text-orange {
+  color: var(--primary, #ff6500);
+}
+
+.footer-tagline {
+  color: #64748b;
+}
+
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--primary, #ff6500);
+}
+.footer-logo-container {
+  display: flex;
+  align-items: center;
+  max-width: 180px; /* Ajusta este valor si tu logo es muy grande */
+}
+
+@media (max-width: 768px) {
+  .footer-logo-container {
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
+.app-footer {
+  margin-bottom: 90px; 
+}
+@media (max-width: 375px) {
+  .app-footer {
+    margin-bottom: 70px; 
+  }
+}

@@ -4,29 +4,35 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Catalogo from "./pages/Catalogo";
 import Detalle from "./pages/Detalle";
 import Error from "./pages/PaginaError";
-import Login from "./pages/Login"
+import Login from "./pages/Login";
 import Registro from "./pages/Registro";
 import Admin from "./pages/Admin";
 import ProtectorRutas from "./components/routes/ProtectorRutas";
 import Playlists from "./pages/Playlist";
+import Footer from "./components/Footer";
+
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+      <div className="d-flex flex-column min-vh-100">
+        <Navbar />
+        <main className="flex-grow-1">
+          <Routes>
+            <Route path="/" element={<Catalogo />} />
+            <Route path="/detalle/:id" element={<Detalle />} />
+            <Route path="/playlists" element={<Playlists />} />
 
-      <Routes>
-        <Route path="/" element={<Catalogo />} />
-        <Route path="/detalle/:id" element={<Detalle />} />
-         <Route path="/playlists" element={<Playlists />} />
-       
-        <Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Registro />} />
-        <Route element={<ProtectorRutas />}>
-          <Route path="/admin" element={<Admin />} />
-          
-        </Route>
-        <Route path="*" element={<Error />} />
-      </Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/registro" element={<Registro />} />
+            {/* <Route path="/ayuda" element={<Ayuda />} /> */}
+            <Route element={<ProtectorRutas />}>
+              <Route path="/admin" element={<Admin />} />
+            </Route>
+            <Route path="*" element={<Error />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
