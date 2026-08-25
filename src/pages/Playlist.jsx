@@ -1,8 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Playlists() {
 
   const [nombre, setNombre] = useState("");
+
+  const [playlists, setPlaylists] = useState([]);
+
+  useEffect(() => {
+
+
+    const playlistsGuardadas =
+      JSON.parse(localStorage.getItem("playlists")) || [];
+
+    setPlaylists(playlistsGuardadas);
+
+  }, []);
+
   const crearPlaylist = () => {
 
   if (!nombre.trim()) {
@@ -10,26 +23,27 @@ function Playlists() {
     return;
   }
 
-  const playlist = {
+  const nuevaPlaylist = {
     id: Date.now(),
     nombre: nombre,
     canciones: []
   };
 
-  const playlistsGuardadas =
-    JSON.parse(localStorage.getItem("playlists")) || [];
+     const playlistsActuales =
+      JSON.parse(localStorage.getItem("playlists")) || [];
 
-  playlistsGuardadas.push(playlist);
+    playlistsActuales.push(nuevaPlaylist);
 
-  localStorage.setItem(
-    "playlists",
-    JSON.stringify(playlistsGuardadas)
-  );
+    localStorage.setItem(
+      "playlists",
+      JSON.stringify(playlistsActuales)
+    );
+   setPlaylists(playlistsActuales);
 
   setNombre("");
 
-  alert("Playlist creada");
 };
+
 
   return (
     <div className="container py-5">
@@ -46,6 +60,38 @@ function Playlists() {
      <button onClick={crearPlaylist}>
   Crear Playlist
 </button>
+<div className="lista-playlists">
+
+        {playlists.length === 0 ? (
+
+          <p>
+            Todavía no tenés ninguna playlist.
+          </p>
+
+        ) : (
+
+          playlists.map((playlist) => (
+
+            <div
+              className="playlist-card"
+              key={playlist.id}
+            >
+
+              <h3>
+                {playlist.nombre}
+              </h3>
+
+              <p>
+                {playlist.canciones.length} canciones
+              </p>
+
+            </div>
+
+          ))
+
+        )}
+
+      </div>
 
     </div>
   );
