@@ -1,8 +1,68 @@
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import canciones from "../data/canciones";
+import Swal from "sweetalert2";
+import { useAppContext } from "../context/AppContext";
 
 function Detalle() {
   const { id } = useParams();
+  const [playlists, setPlaylists] = useState([]);
+  const [playlistSeleccionada, setPlaylistSeleccionada] = useState("");
+  const { usuarioLogueado } = useAppContext();
+
+  const agregarAPlaylist = () => {
+
+  if (!playlistSeleccionada) {
+    alert("Seleccioná una playlist");
+    return;
+  }
+
+  const playlistsGuardadas =
+    JSON.parse(localStorage.getItem("playlists")) || [];
+
+  const playlistsActualizadas = playlistsGuardadas.map((playlist) => {
+
+    if (playlist.id === Number(playlistSeleccionada)) {
+
+      return {
+        ...playlist,
+        canciones: [
+          ...playlist.canciones,
+          cancion.id
+        ]
+      };
+
+    }
+
+    return playlist;
+
+  });
+
+  localStorage.setItem(
+    "playlists",
+    JSON.stringify(playlistsActualizadas)
+  );
+
+  setPlaylists(playlistsActualizadas);
+
+        Swal.fire({
+          title: "¡Cancion Agregada!",
+          text: "Cancion en Playlist",
+          icon: "success",
+          background: "#121824",
+          color: "#FFFFFF",
+          confirmButtonColor: "#FF6500",
+          confirmButtonText: "Entendido",
+          iconColor: "#FF6500",
+        })
+};
+
+  useEffect(() => {
+    const playlistsGuardadas =
+      JSON.parse(localStorage.getItem("playlists")) || [];
+
+    setPlaylists(playlistsGuardadas);
+  }, []);
 
   const cancion = canciones.find((cancion) => cancion.id === Number(id));
 
@@ -37,13 +97,30 @@ function Detalle() {
           <p className="detalle-album">
             Álbum: <strong>{cancion.album}</strong>
           </p>
+            {usuarioLogueado && (
 
           <div className="detalle-actions">
-            <button className="btn-detalle">
+            <select
+            className="select-playlist"
+              value={playlistSeleccionada}
+              onChange={(e) => setPlaylistSeleccionada(e.target.value)}
+            >
+              <option value="">Elegir Playlist</option>
+
+              {playlists.map((playlist) => (
+                <option key={playlist.id} value={playlist.id}>
+                  {playlist.nombre}
+                </option>
+              ))}
+            </select>
+            <button className="btn-detalle"
+            onClick={agregarAPlaylist}>
+
               <i className="bi bi-play-fill"></i>
               Agregar a Playlist
             </button>
           </div>
+            )}
 
           {/* DATOS */}
 
