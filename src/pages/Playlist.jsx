@@ -71,24 +71,30 @@ function Playlists() {
 
         ) : (
 
-          playlists.map((playlist) => (
+                   playlists.map((playlist) => {
 
-            <div
-              className="playlist-card"
-              key={playlist.id}
-            >
+            const cancionesPlaylist = canciones.filter(
+              (cancion) => playlist.canciones.includes(cancion.id)
+            );
 
-              <h3>
-                {playlist.nombre}
-              </h3>
+            return (
+              <div
+                className="playlist-card"
+                key={playlist.id}
+              >
 
-              <p>
-                {playlist.canciones.length} canciones
-              </p>
+                <h3>
+                  {playlist.nombre}
+                </h3>
 
-            </div>
+                <p>
+                  {cancionesPlaylist.length} canciones
+                </p>
 
-          ))
+              </div>
+            );
+
+          })
 
         )}
 
