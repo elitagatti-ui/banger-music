@@ -1,17 +1,4 @@
 ````markdown
-<p align="center">
-  <img src="./public/favicon.svg" alt="BANGER Logo" width="100" />
-</p>
-
-<h1 align="center">🎵 BANGER - Plataforma de Streaming de Música</h1>
-
-<p align="center">
-  <b>Single Page Application para reproducción de música, gestión de catálogo y playlists.</b>
-</p>
-
-<p align="center">
-  <a href="https://banger-music-code.netlify.app/">🚀 Probar Demo en Vivo</a>
-</p>
 
 ---
 
