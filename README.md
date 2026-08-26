@@ -1,16 +1,97 @@
-# React + Vite
+````markdown
+<p align="center">
+  <img src="./public/favicon.svg" alt="BANGER Logo" width="100" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1 align="center">🎵 BANGER - Plataforma de Streaming de Música</h1>
 
-Currently, two official plugins are available:
+<p align="center">
+  <b>Single Page Application para reproducción de música, gestión de catálogo y playlists.</b>
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+<p align="center">
+  <a href="https://banger-music-code.netlify.app/">🚀 Probar Demo en Vivo</a>
+</p>
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# 🎵 BANGER - Plataforma de Streaming de Música
 
-## Expanding the ESLint configuration
+> Single Page Application (SPA) para reproducción de música, gestión de catálogo y creación de playlists personalizadas desarrollada con React, Vite y Bootstrap.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🚀 **Deploy en vivo:** [banger-music-code.netlify.app](https://banger-music-code.netlify.app/)
+
+---
+
+## ⚡ Funcionalidades
+
+- **Catálogo & Búsqueda Dinámica:** Filtrado en tiempo real por canción o artista. Desmontaje automático del bloque _Hero_ durante la búsqueda para priorizar los resultados visuales.
+- **Reproductor Global:** Barra de reproducción persistente en la interfaz a lo largo de toda la navegación por las distintas rutas de la app.
+- **Sistema de Playlists:** Creación y asignación de canciones a playlists personalizadas con persistencia individualizada por usuario en `localStorage`.
+- **Panel de Administración (CRUD Completo):** Módulo privado para crear, editar, listar y eliminar canciones del catálogo.
+- **Formularios & Sanitización XSS:** Formularios gestionados con `react-hook-form`, validaciones avanzadas por Regex y limpiado de caracteres especiales para prevenir inyecciones de código.
+- **Soporte & Ayuda:** Vista de preguntas frecuentes con acordeón dinámico y formulario de contacto.
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+| Categoría          | Tecnología / Librería              |
+| :----------------- | :--------------------------------- |
+| **Core**           | React 18, Vite                     |
+| **Enrutado**       | React Router DOM v6                |
+| **Formularios**    | React Hook Form                    |
+| **UI & Estilos**   | Bootstrap 5, Bootstrap Icons, CSS3 |
+| **Notificaciones** | SweetAlert2                        |
+| **Persistencia**   | LocalStorage + Context API         |
+
+---
+
+## 🔑 Credenciales de Prueba (Variables de Entorno)
+
+Para probar el panel de administración (`/admin`), crear un archivo `.env` en la raíz del proyecto con los siguientes datos:
+
+```env
+VITE_ADMIN_EMAIL=admin@banger.com
+VITE_ADMIN_PASSWORD=Admin123!
+```
+````
+
+---
+
+## 💻 Instalación Local
+
+1. **Clonar el repositorio:**
+
+```bash
+git clone https://github.com/elitagatti-ui/banger-music.git
+cd banger-music
+
+```
+
+2. **Instalar dependencias:**
+
+```bash
+pnpm install
+
+```
+
+3. **Configurar variables de entorno:**
+   Crear el archivo `.env` en la raíz con las credenciales indicadas arriba.
+4. **Iniciar el entorno de desarrollo:**
+
+```bash
+pnpm run dev
+
+```
+
+---
+
+## 👥 Autores
+
+- **Eliana Gatti** - [GitHub](https://github.com/elitagatti-ui)
+- **Francisco Sandoval** - [GitHub](https://github.com/ntfran)
+
+```
+
+```

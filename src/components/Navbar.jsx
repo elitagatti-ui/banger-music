@@ -38,7 +38,7 @@ function Navbar() {
         </Link>
 
         <Link to="/playlists" onClick={cerrarMenu}>
-          Playlists
+          Lista de Reproduccion
         </Link>
 
         <Link to="/ayuda" onClick={cerrarMenu}>

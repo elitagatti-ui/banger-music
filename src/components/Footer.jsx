@@ -38,7 +38,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li className="list-inline-item mx-2">
-                <Link to="/playlists">Playlists</Link>
+                <Link to="/playlists">Lista de Reproduccion</Link>
               </li>
               <li className="list-inline-item mx-2">
                 <Link to="/ayuda">Ayuda</Link>
