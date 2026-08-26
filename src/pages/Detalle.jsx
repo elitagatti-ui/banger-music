@@ -4,14 +4,14 @@ import cancionesIniciales from "../data/canciones";
 import Swal from "sweetalert2";
 import { useAppContext } from "../context/AppContext";
 
-const canciones =
-  JSON.parse(localStorage.getItem("canciones")) || cancionesIniciales;
-
 function Detalle() {
   const { id } = useParams();
   const [playlists, setPlaylists] = useState([]);
   const [playlistSeleccionada, setPlaylistSeleccionada] = useState("");
   const { usuarioLogueado } = useAppContext();
+
+  const canciones =
+    JSON.parse(localStorage.getItem("canciones")) || cancionesIniciales;
 
   const agregarAPlaylist = () => {
     if (!playlistSeleccionada) {
